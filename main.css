@@ -1,0 +1,47 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+}
+.background-image {
+  position: relative;
+  height: 0;
+  padding-top: calc(9 / 16 * 100%);
+  padding: 0;
+}
+.image-ratio {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100% !important;
+  max-height: 430px !important;
+}
+img.image-ratio {
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.8;
+}
+.blog-text {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 75px;
+}
+.blog-text h1,
+.blog-text a {
+  position: relative;
+  z-index: 2;
+  color: white;
+}
+.blog-title h1 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 50px;
+}
+.blog-choice a{
+  padding-right: 5px;
+}
