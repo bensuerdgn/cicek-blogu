@@ -5,43 +5,33 @@
 }
 a {
   text-decoration: none;
-  font-family: "Montserrat", sans-serif;
   font-size: 20px;
+  margin-right: 10px;
+  font-weight: 600;
 }
-.background-image {
-  position: relative;
-  height: 0;
-  padding-top: calc(9 / 16 * 100%);
-  padding: 0;
+.container {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montserrat', sans-serif;
 }
-.image-ratio {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100% !important;
-  max-height: 430px !important;
-}
-img.image-ratio {
-  object-fit: cover;
-  z-index: 0;
-  opacity: 0.8;
+.header-background {
+  width: 100%;
+  min-height: 400px;
+  background-image: url("https://cdn.pixabay.com/photo/2016/04/24/17/27/wood-1350175__340.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .blog-text {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding-top: 75px;
+  padding-top: 80px;
 }
 .blog-text h1,
 .blog-text a {
-  position: relative;
-  z-index: 2;
   color: white;
 }
 .blog-title h1 {
-  font-family: "Montserrat", sans-serif;
   font-size: 50px;
-}
-.blog-choice a{
-  padding-right: 5px;
+  font-weight: 700;
 }
