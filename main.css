@@ -1,6 +1,6 @@
 :root {
-  --text-color:#767771;
-  --img-color:#cad2c5;
+  --text-color: #767771;
+  --img-color: #cad2c5;
 }
 * {
   padding: 0;
@@ -12,6 +12,7 @@ a {
   font-size: 20px;
   margin-right: 10px;
   font-weight: 600;
+  color: var(--text-color);
 }
 .container {
   display: flex;
@@ -39,18 +40,39 @@ a {
   font-size: 50px;
   font-weight: 700;
 }
-.nav{
+.nav {
   display: flex;
   justify-content: center;
 }
-.nav-tag{
+.nav-tag {
   width: 70%;
-  margin-top: 10px;
+  margin-top: 5%;
   padding: 10px 0 10px 0;
   border: var(--img-color) 2px solid;
   border-radius: 40px;
   text-align: center;
 }
-.nav-tag a{
-  color:var(--text-color);
+
+.section {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
+.content{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 95%;
+}
+.content-box{
+  width: 30%;
+  height: auto;
+  margin:2% 2% 0 0;
+  
+}
+.content-box .img img{
+  width: 100%;
+}
+.content-box .box-info .box-text{
+  width: 100%;
 }
