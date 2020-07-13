@@ -14,6 +14,13 @@ a {
   font-weight: 600;
   color: var(--text-color);
 }
+h1 {
+  font-size: 50px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 30px;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -35,10 +42,6 @@ a {
 .blog-text h1,
 .blog-text a {
   color: white;
-}
-.blog-title h1 {
-  font-size: 50px;
-  font-weight: 700;
 }
 .nav {
   display: flex;
@@ -86,8 +89,15 @@ a {
   border: var(--img-color) 2px solid;
   border-radius: 40px;
 }
-.footer{
+.footer {
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  justify-content: center;
+  text-align: center;
   width: 100%;
-
+  height: 400px;
+  padding: 2%;
+  background-color: var(--img-color);
+  color: white;
 }
