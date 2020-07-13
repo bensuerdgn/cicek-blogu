@@ -58,21 +58,36 @@ a {
   justify-content: center;
   margin-top: 5%;
 }
-.content{
+.content {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: 95%;
+  margin-left: 2%;
 }
-.content-box{
+.content-box {
   width: 30%;
   height: auto;
-  margin:2% 2% 0 0;
-  
+  margin: 2% 2% 0 0;
 }
-.content-box .img img{
+.content-box .img img {
   width: 100%;
 }
-.content-box .box-info .box-text{
+.content-box .box-info .box-text {
   width: 100%;
+}
+.page-number {
+  display: flex;
+  justify-content: center;
+}
+.number {
+  margin: 5% 0 5% 0;
+  padding: 15px;
+  border: var(--img-color) 2px solid;
+  border-radius: 40px;
+}
+.footer{
+  display: grid;
+  width: 100%;
+
 }
