@@ -33,7 +33,7 @@ p {
 .header-background {
   width: 100%;
   min-height: 400px;
-  background-image: url("https://cdn.pixabay.com/photo/2016/04/24/17/27/wood-1350175__340.jpg");
+  background-image: url("https://pbs.twimg.com/media/EcYkO2AXkAAajed?format=jpg&name=large");
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.9;
@@ -73,7 +73,13 @@ p {
   border-radius: 40px;
   text-align: center;
 }
-
+.nav-tag a{
+  padding: 5px;
+}
+.nav-tag a:hover {
+  background-color: var(--img-color);
+  border-radius: 40px;
+}
 .section {
   display: flex;
   justify-content: center;
