@@ -73,7 +73,7 @@ p {
   border-radius: 40px;
   text-align: center;
 }
-.nav-tag a{
+.nav-tag a {
   padding: 5px;
 }
 .nav-tag a:hover {
@@ -97,8 +97,16 @@ p {
   height: auto;
   margin: 2% 2% 0 0;
 }
+
 .content-box .img img {
   width: 100%;
+}
+.content-box .img:hover {
+  background-color: var(--img-color);
+  opacity: 1;
+}
+.content-box .img img:hover {
+  opacity: 0.1;
 }
 .content-box .box-info {
   width: 100%;
