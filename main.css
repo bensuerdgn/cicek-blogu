@@ -153,6 +153,13 @@ p {
   border-radius: 100%;
   margin-right: 15px;
 }
+.recent-posts-img:hover{
+  background-color: var(--img-color);
+  opacity: 1;
+}
+.recent-posts-img img:hover{
+  opacity: 0.5;
+}
 .tag-cloud a {
   background-color: white;
   text-transform: uppercase;
@@ -160,6 +167,9 @@ p {
   border-radius: 5px;
   padding: 0 12px;
   line-height: 32px;
+}
+.tag-cloud a:hover{
+  background-color: var(--img-color);
 }
 @media only screen and (max-width: 770px) {
   .blog-choice {

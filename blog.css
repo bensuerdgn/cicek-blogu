@@ -115,6 +115,10 @@ p {
   border-radius: 100%;
   margin-right: 15px;
 }
+
+.latest-posts-img img:hover{
+  opacity: 0.5;
+}
 .footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -144,6 +148,13 @@ p {
   border-radius: 100%;
   margin-right: 15px;
 }
+.recent-posts-img:hover{
+  background-color: var(--img-color);
+  opacity: 1;
+}
+.recent-posts-img img:hover{
+  opacity: 0.5;
+}
 .tag-cloud a {
   background-color: white;
   text-transform: uppercase;
@@ -152,6 +163,9 @@ p {
   padding: 0 12px;
   line-height: 32px;
 }
+.tag-cloud a:hover {
+  background-color: var(--img-color);
+}
 @media only screen and (max-width: 770px) {
   .blog-choice {
     display: none;
@@ -159,7 +173,7 @@ p {
   .dropdown {
     display: block;
   }
- 
+
   .footer {
     grid-template-columns: repeat(1, 1fr);
   }
