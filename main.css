@@ -48,19 +48,6 @@ p {
 .blog-text a {
   color: white;
 }
-.dropdown {
-  display: none;
-}
-.dropdown .dropbtn {
-  font-size: 25px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
 .nav {
   display: flex;
   justify-content: center;
@@ -153,11 +140,11 @@ p {
   border-radius: 100%;
   margin-right: 15px;
 }
-.recent-posts-img:hover{
+.recent-posts-img:hover {
   background-color: var(--img-color);
   opacity: 1;
 }
-.recent-posts-img img:hover{
+.recent-posts-img img:hover {
   opacity: 0.5;
 }
 .tag-cloud a {
@@ -168,15 +155,15 @@ p {
   padding: 0 12px;
   line-height: 32px;
 }
-.tag-cloud a:hover{
+.tag-cloud a:hover {
   background-color: var(--img-color);
 }
 @media only screen and (max-width: 770px) {
-  .blog-choice {
-    display: none;
+  .blog-text{
+    flex-direction: column;
   }
-  .dropdown {
-    display: block;
+  .blog-title{
+    margin-bottom: 10%;
   }
   .content {
     flex-direction: column;

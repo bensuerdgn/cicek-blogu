@@ -48,19 +48,7 @@ p {
 .blog-text a {
   color: white;
 }
-.dropdown {
-  display: none;
-}
-.dropdown .dropbtn {
-  font-size: 25px;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
+
 .section {
   display: flex;
   justify-content: center;
@@ -167,13 +155,12 @@ p {
   background-color: var(--img-color);
 }
 @media only screen and (max-width: 770px) {
-  .blog-choice {
-    display: none;
+  .blog-text{
+    flex-direction: column;
   }
-  .dropdown {
-    display: block;
+  .blog-title,.blog-choice{
+    margin-bottom: 5%;
   }
-
   .footer {
     grid-template-columns: repeat(1, 1fr);
   }
