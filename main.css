@@ -83,26 +83,28 @@ p {
   width: 30%;
   height: auto;
   margin: 2% 2% 0 0;
-  transition: .3s all ease-in-out;
-  box-shadow: 0px 15px 45px -9px rgba(0,0,0,.2);
+  transition: 0.3s all ease-in-out;
+  box-shadow: 0px 15px 45px -9px rgba(0, 0, 0, 0.2);
+  border-radius: 40px;
 }
-.content-box:hover{
+.content-box:hover {
   box-shadow: none;
 }
-
 .content-box .img img {
   width: 100%;
+  border-radius: 40px;
 }
 .content-box .img:hover {
   background-color: var(--img-color);
   opacity: 1;
+  border-radius: 40px;
 }
 .content-box .img img:hover {
   opacity: 0.1;
 }
 .content-box .box-info {
   width: 100%;
-  padding-top: 10px;
+  padding: 10px;
 }
 .content-box .box-info .box-title a {
   font-size: 10px;
@@ -164,10 +166,10 @@ p {
   background-color: var(--img-color);
 }
 @media only screen and (max-width: 770px) {
-  .blog-text{
+  .blog-text {
     flex-direction: column;
   }
-  .blog-title{
+  .blog-title {
     margin-bottom: 10%;
   }
   .content {
