@@ -82,13 +82,16 @@ p {
 .content-box {
   width: 30%;
   height: auto;
-  margin: 2% 2% 0 0;
+  margin: 4% 3% 0 0;
   transition: 0.3s all ease-in-out;
   box-shadow: 0px 15px 45px -9px rgba(0, 0, 0, 0.2);
   border-radius: 40px;
 }
 .content-box:hover {
   box-shadow: none;
+}
+.content-box .img{
+  border-radius: 40px;
 }
 .content-box .img img {
   width: 100%;
@@ -97,7 +100,6 @@ p {
 .content-box .img:hover {
   background-color: var(--img-color);
   opacity: 1;
-  border-radius: 40px;
 }
 .content-box .img img:hover {
   opacity: 0.1;

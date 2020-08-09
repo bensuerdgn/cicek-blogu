@@ -4,6 +4,9 @@ include "./connect.php";
 $header = $db->query("SELECT * FROM header")->fetch(PDO::FETCH_ASSOC);
 $nav = $db->query("SELECT * FROM nav");
 $section = $db->query("SELECT * FROM section");
+$footertitle = $db->query("SELECT * FROM footertitle")->fetch(PDO::FETCH_ASSOC);
+$footerrecentpost = $db->query("SELECT * FROM footerrecentpost");
+$footertags = $db->query("SELECT * FROM footertags");
 
 ?>
 <!DOCTYPE html>
@@ -38,29 +41,28 @@ $section = $db->query("SELECT * FROM section");
             <div class="nav">
                 <div class="nav-tag">
                     <?php
-if ($nav->rowCount()) {
-    foreach ($nav as $row) {
-        ?>
+                        if ($nav->rowCount()) {
+                           foreach ($nav as $row) {
+                    ?>
                         <a href="#"><?php echo $row["kategori"]; ?></a>
                     <?php
-}
-}
-?>
+                        }
+                            }
+                    ?>
                 </div>
             </div>
         </nav>
         <section>
             <div class="section">
                 <div class="content">
-                <?php 
+                        <?php 
                             if ($section->rowCount()) {
                                 foreach($section as $row){
                         ?>
                     <div class="content-box">
                         
                         <div class="img">
-                            <img src="<?php echo $row["fotograf"]; ?>"
-                                alt="turuncu çiçek">
+                            <img src="<?php echo $row["fotograf"]; ?>">
                         </div>
                         <div class="box-info">
                             <div class="box-title">
@@ -74,11 +76,12 @@ if ($nav->rowCount()) {
                         </div>
                                 
                     </div>
-                    <?php }
-                                }
-                                ?>
+                    <?php 
+                        }
+                            }
+                    ?>
                 </div>
-            </div>
+            </div>  
             <div class="page-number">
                 <div class="number">
                     <a href="#">1</a>
@@ -89,62 +92,48 @@ if ($nav->rowCount()) {
         <footer>
             <div class="footer">
                 <div class="footer-title">
-                    <h1>ÇİÇEKLER</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ad saepe accusamus nostrum
-                        aut eius eligendi impedit voluptas quaerat molestias, labore qui id quod temporibus tempora.
-                        Ducimus alias ipsam dolore?</p>
+                    <h1>
+                    <?php
+                     echo $footertitle["logo"]; 
+                    ?>
+                     </h1>
+                    <p><?php echo $footertitle["aciklama"]; ?></p>
                 </div>
                 <div class="footer-recent-posts">
-                    <h2>Öne Çıkanlar</h2>
+                    <h2><?php echo $footertitle["one-cikan"]; ?></h2>
+                    <?php
+                        if ($footerrecentpost->rowCount()) {
+                            foreach($footerrecentpost as $row){
+                    ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
-                            <a href="#"> <img src="https://cdn.pixabay.com/photo/2015/04/08/15/09/daisy-712892__340.jpg"
-                                    alt="papatya"></a>
+                            <a href="#"> <img src="<?php echo $row["fotograf"]; ?>"
+                                    ></a>
                         </div>
                         <div class="recent-post-title">
-                            <p>PAPATYA</p>
-                            <p>papatyalar en güzel çiçeklerdir</p>
+                            <p><?php echo $row["fotograf-isim"]; ?></p>
+                            <p><?php echo $row["fotograf-aciklama"]; ?></p>
                         </div>
                     </div>
-                    <div class="recent-posts">
-                        <div class="recent-posts-img">
-                            <a href="#"> <img src="https://cdn.pixabay.com/photo/2015/04/08/15/09/daisy-712892__340.jpg"
-                                    alt="papatya"></a>
-                        </div>
-                        <div class="recent-post-title">
-                            <p>PAPATYA</p>
-                            <p>papatyalar en güzel çiçeklerdir</p>
-                        </div>
-                    </div>
-                    <div class="recent-posts">
-                        <div class="recent-posts-img">
-                            <a href="#"> <img src="https://cdn.pixabay.com/photo/2015/04/08/15/09/daisy-712892__340.jpg"
-                                    alt="papatya"></a>
-                        </div>
-                        <div class="recent-post-title">
-                            <p>PAPATYA</p>
-                            <p>papatyalar en güzel çiçeklerdir</p>
-                        </div>
-                    </div>
+                    <?php 
+                        }
+                            }
+                    ?>
+
                 </div>
                 <div class="footer-tags">
-                    <h2>Başlıklar</h2>
+                    <h2><?php echo $footertitle["baslik"] ?></h2>
+                   
                     <div class="tag-cloud">
-                        <a href="#">papatya</a>
-                        <a href="#">aloe vera</a>
-                        <a href="#">kaktüs</a>
-                        <a href="#">lale</a>
-                        <a href="#">gül</a>
-                        <a href="#">papatya</a>
-                        <a href="#">aloe vera</a>
-                        <a href="#">kaktüs</a>
-                        <a href="#">lale</a>
-                        <a href="#">gül</a>
-                        <a href="#">papatya</a>
-                        <a href="#">aloe vera</a>
-                        <a href="#">kaktüs</a>
-                        <a href="#">lale</a>
-                        <a href="#">gül</a>
+                    <?php 
+                        if ($footertags->rowCount()) {
+                            foreach($footertags as $row){
+                    ?>
+                        <a href="#"><?php echo $row["kategori"] ?></a>
+                    <?php 
+                        }
+                            }
+                    ?>
                     </div>
                 </div>
             </div>
