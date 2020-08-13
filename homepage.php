@@ -1,33 +1,23 @@
+
 <?php
 include "./connect.php";
-if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header('Location:index.php');
-    exit;
-}
 $header = $db->query("SELECT * FROM header")->fetch(PDO::FETCH_ASSOC);
-
-$section_query = $db->prepare("SELECT * FROM section WHERE id=?");
-$section_query->execute([
-    $_GET['id'],
-]);
-$section=$section_query->fetch(PDO::FETCH_ASSOC);
-
+$nav = $db->query("SELECT * FROM nav");
+$section = $db->query("SELECT * FROM section");
 $footertitle = $db->query("SELECT * FROM footertitle")->fetch(PDO::FETCH_ASSOC);
-$footerlatestpost = $db->query("SELECT * FROM footerlatestpost");
 $footerrecentpost = $db->query("SELECT * FROM footerrecentpost");
 $footertags = $db->query("SELECT * FROM footertags");
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="blog.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
     <script src="https://kit.fontawesome.com/8bbf8c5eb9.js" crossorigin="anonymous"></script>
-
     <title>Document</title>
 </head>
 
@@ -43,45 +33,61 @@ $footertags = $db->query("SELECT * FROM footertags");
                         <a href="#"><?php echo $header["anasayfa"]; ?></a>
                         <a href="#"><?php echo $header["galeri"]; ?></a>
                     </div>
+
                 </div>
             </div>
         </div>
-        <section>
-            <div class="content">
-                <div class="content-box">
-                    <div class="img"><img src="<?php echo $section["fotograf"]; ?>"
-                            alt="turuncu çiçek"></div>
-                    <div class="box-info">
-                        <div class="box-title"><a href="">
-                                <h2><?php echo $section["baslik"]; ?></h2>
-                            </a></div>
-                        <div class="box-text">
-                            <p><?php echo $section["aciklama"]; ?></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog-latest-posts">
-                    <h2><?php echo $footertitle["son-post"]; ?></h2>
+        <nav>
+            <div class="nav">
+                <div class="nav-tag">
                     <?php
-                        if ($footerlatestpost->rowCount()) {
-                            foreach($footerlatestpost as $row){
+                        if ($nav->rowCount()) {
+                           foreach ($nav as $row) {
                     ?>
-                    <div class="latest-posts">
-                        <div class="latest-posts-img">
-                            <a href="#"> <img src="<?php echo $row["fotograf"]; ?>"></a>
+                        <a href="#"><?php echo $row["kategori"]; ?></a>
+                    <?php
+                        }
+                            }
+                    ?>
+                </div>
+            </div>
+        </nav>
+        <section>
+            <div class="section">
+                <div class="content">
+                        <?php 
+                            if ($section->rowCount()) {
+                                foreach($section as $row){
+                        ?>
+                    <div class="content-box">
+                        
+                        <div class="img">
+                            <img src="<?php echo $row["fotograf"]; ?>">
                         </div>
-                        <div class="latest-post-title">
-                            <p><?php echo $row["fotograf-isim"]; ?></p>
-                            <p><?php echo $row["fotograf-aciklama"]; ?></p>
+                        <div class="box-info">
+                            <div class="box-title">
+                                <a href="index.php?sayfa=blog&id=<?php echo $row['id']; ?>">
+                                    <h2><?php echo $row["baslik"]; ?></h2>
+                                </a>
+                            </div>
+                            <div class="box-text">
+                                <p><?php echo $row["aciklama"]; ?></p>
+                            </div>
                         </div>
+                                
                     </div>
                     <?php 
                         }
                             }
                     ?>
                 </div>
+            </div>  
+            <div class="page-number">
+                <div class="number">
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                </div>
             </div>
-
         </section>
         <footer>
             <div class="footer">
@@ -101,7 +107,8 @@ $footertags = $db->query("SELECT * FROM footertags");
                     ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
-                            <a href="#"> <img src="<?php echo $row["fotograf"]; ?>"></a>
+                            <a href="#"> <img src="<?php echo $row["fotograf"]; ?>"
+                                    ></a>
                         </div>
                         <div class="recent-post-title">
                             <p><?php echo $row["fotograf-isim"]; ?></p>
@@ -132,6 +139,7 @@ $footertags = $db->query("SELECT * FROM footertags");
             </div>
         </footer>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
