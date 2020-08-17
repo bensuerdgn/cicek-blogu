@@ -52,7 +52,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     <div class="img"><img src="<?php echo $section["fotograf"]; ?>"
                             alt="turuncu çiçek"></div>
                     <div class="box-info">
-                        <div class="box-title"><a href="">
+                        <div class="box-title"><a href="index.php?sayfa=blog&id=<?php echo $row['id']; ?>">
                                 <h2><?php echo $section["baslik"]; ?></h2>
                             </a></div>
                         <div class="box-text">
@@ -68,7 +68,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     ?>
                     <div class="latest-posts">
                         <div class="latest-posts-img">
-                            <a href="#"> <img src="<?php echo $row["fotograf"]; ?>"></a>
+                            <a href=" index.php?sayfa=blog&id=<?php echo $row['id']; ?>"> <img src="<?php echo $row["fotograf"]; ?>"></a>
                         </div>
                         <div class="latest-post-title">
                             <p><?php echo $row["fotograf-isim"]; ?></p>
@@ -101,7 +101,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
-                            <a href="#"> <img src="<?php echo $row["fotograf"]; ?>"></a>
+                            <a href="index.php?sayfa=blog&id=<?php echo $row['id']; ?>"> <img src="<?php echo $row["fotograf"]; ?>"></a>
                         </div>
                         <div class="recent-post-title">
                             <p><?php echo $row["fotograf-isim"]; ?></p>

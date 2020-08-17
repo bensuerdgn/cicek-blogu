@@ -5,7 +5,7 @@ $header = $db->query("SELECT * FROM header")->fetch(PDO::FETCH_ASSOC);
 $nav = $db->query("SELECT * FROM nav");
 $section = $db->query("SELECT * FROM section");
 $footertitle = $db->query("SELECT * FROM footertitle")->fetch(PDO::FETCH_ASSOC);
-$footerrecentpost = $db->query("SELECT * FROM footerrecentpost");
+$recentpost = $db->query("SELECT * FROM recentpost");
 $footertags = $db->query("SELECT * FROM footertags");
 
 ?>
@@ -44,7 +44,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                         if ($nav->rowCount()) {
                            foreach ($nav as $row) {
                     ?>
-                        <a href="#"><?php echo $row["kategori"]; ?></a>
+                        <a href="#"><?php echo $row["nav_tag"]; ?></a>
                     <?php
                         }
                             }
@@ -62,16 +62,16 @@ $footertags = $db->query("SELECT * FROM footertags");
                     <div class="content-box">
                         
                         <div class="img">
-                            <img src="<?php echo $row["fotograf"]; ?>">
+                            <img src="<?php echo $row["section_fotograf"]; ?>">
                         </div>
                         <div class="box-info">
                             <div class="box-title">
                                 <a href="index.php?sayfa=blog&id=<?php echo $row['id']; ?>">
-                                    <h2><?php echo $row["baslik"]; ?></h2>
+                                    <h2><?php echo $row["section_baslik"]; ?></h2>
                                 </a>
                             </div>
                             <div class="box-text">
-                                <p><?php echo $row["aciklama"]; ?></p>
+                                <p><?php echo $row["section_aciklama"]; ?></p>
                             </div>
                         </div>
                                 
@@ -94,25 +94,25 @@ $footertags = $db->query("SELECT * FROM footertags");
                 <div class="footer-title">
                     <h1>
                     <?php
-                     echo $footertitle["logo"]; 
+                     echo $footertitle["footer_logo"]; 
                     ?>
                      </h1>
-                    <p><?php echo $footertitle["aciklama"]; ?></p>
+                    <p><?php echo $footertitle["footer_aciklama"]; ?></p>
                 </div>
                 <div class="footer-recent-posts">
-                    <h2><?php echo $footertitle["one-cikan"]; ?></h2>
+                    <h2><?php echo $footertitle["one_cikan"]; ?></h2>
                     <?php
-                        if ($footerrecentpost->rowCount()) {
-                            foreach($footerrecentpost as $row){
+                        if ($recentpost->rowCount()) {
+                            foreach($recentpost as $row){
                     ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
-                            <a href="#"> <img src="<?php echo $row["fotograf"]; ?>"
+                            <a href="index.php?sayfa=blog&id=<?php echo $row['id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"
                                     ></a>
                         </div>
                         <div class="recent-post-title">
-                            <p><?php echo $row["fotograf-isim"]; ?></p>
-                            <p><?php echo $row["fotograf-aciklama"]; ?></p>
+                            <p><?php echo $row["recent_baslik"]; ?></p>
+                            <p><?php echo $row["recent_aciklama"]; ?></p>
                         </div>
                     </div>
                     <?php 
@@ -122,14 +122,14 @@ $footertags = $db->query("SELECT * FROM footertags");
 
                 </div>
                 <div class="footer-tags">
-                    <h2><?php echo $footertitle["baslik"] ?></h2>
+                    <h2><?php echo $footertitle["footer_baslik"] ?></h2>
                    
                     <div class="tag-cloud">
                     <?php 
                         if ($footertags->rowCount()) {
                             foreach($footertags as $row){
                     ?>
-                        <a href="#"><?php echo $row["kategori"] ?></a>
+                        <a href="index.php?sayfa=blog&kategori=<?php echo $row['footer_tag']; ?>"><?php echo $row["footer_tag"] ?></a>
                     <?php 
                         }
                             }
