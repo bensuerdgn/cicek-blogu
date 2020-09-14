@@ -7,7 +7,7 @@
           <li><a><i class="fa fa-cog"></i> Ayarlar <span class="fa fa-chevron-down"></span></a>
             <ul class="nav child_menu">
               <li><a href="genel_ayar.php">Genel Ayarlar</a></li>
-              <li><a href="index2.html">Dashboard2</a></li>
+              <li><a href="section_ayar.php">Section Ayarları</a></li>
               <li><a href="index3.html">Dashboard3</a></li>
             </ul>
           </li>
