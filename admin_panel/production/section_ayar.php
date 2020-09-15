@@ -1,5 +1,7 @@
-<?php include 'header.php';?>
-
+<?php include 'header.php';
+include '../../site/connect.php';
+?>
+ 
         <!-- page content -->
         <div class="right_col" role="main">
           <div class="">
@@ -19,25 +21,25 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
-                        <h2>İçerik Ayarları 
+                        <h2>İçerik Ayarları
                         <small>
                                         <?php
-                                        if ($_GET['durum']=='ok') {
-                                        ?>
+                                          if ($_GET['durum'] == 'ok') {
+                                              ?>
                                             <b style="color:green">Başarıyla Eklendi</b>
                                         <?php
-                                        } elseif ($_GET['durum']=='no') {
-                                        ?>
+                                          } elseif ($_GET['durum'] == 'no') {
+                                              ?>
                                             <b style="color:red">Başarıyla Eklenemedi</b>
-                                        <?php    
-                                        }
-                                        ?>
+                                        <?php
+                                            }
+                                            ?>
                                         </small>
                         </h2>
                       <div align="right" >
                         <a href="section_ekle.php"><button  class="btn btn-primary " ><i class="fa fa-plus" aria-hidden="true" ></i> Yeni Ekle</button></a>
                       </div>
-                          
+
                       <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -56,14 +58,19 @@
                               </tr>
                           </thead>
                           <tbody>
+                            <?php
+                            $sectionsor=$db->prepare("SELECT * FROM section ORDER BY id DESC");
+                            $sectionsor->execute();
+                            while ($sectioncek=$sectionsor->fetch(PDO::FETCH_ASSOC)) {
+                            ?>            
                               <tr class="even pointer">
-                                <td class=" "></td>
-                                <td class=" "></td>
-                                <td class=" "></td>
+                                <td class=" "><?php echo $sectioncek['section_fotograf'] ?></td>
+                                <td class=" "><?php echo $sectioncek['section_baslik'] ?></td>
+                                <td class=" "><?php echo $sectioncek['section_aciklama'] ?></td>
                                 <td class=" "><button style="width:80px;" class="btn btn-success btn-xs" ><i class="fa fa-pencil" aria-hidden="true" ></i> Düzenle</button></td>
                                 <td class=" "><button style="width:80px;" class="btn btn-danger btn-xs" ><i class="fa fa-trash" aria-hidden="true" ></i> Sil</button></td>
                               </tr>
-                             
+                            <?php } ?>
                             </tbody>
                         </table>
                       </div>
