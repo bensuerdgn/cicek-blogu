@@ -19,9 +19,23 @@
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
-                        <h2>İçerik Ayarları <small>jhfdbchx</small></h2>
+                        <h2>İçerik Ayarları 
+                        <small>
+                                        <?php
+                                        if ($_GET['durum']=='ok') {
+                                        ?>
+                                            <b style="color:green">Başarıyla Eklendi</b>
+                                        <?php
+                                        } elseif ($_GET['durum']=='no') {
+                                        ?>
+                                            <b style="color:red">Başarıyla Eklenemedi</b>
+                                        <?php    
+                                        }
+                                        ?>
+                                        </small>
+                        </h2>
                       <div align="right" >
-                        <a href="section-ekle.php"><button  class="btn btn-primary " ><i class="fa fa-plus" aria-hidden="true" ></i> Yeni Ekle</button></a>
+                        <a href="section_ekle.php"><button  class="btn btn-primary " ><i class="fa fa-plus" aria-hidden="true" ></i> Yeni Ekle</button></a>
                       </div>
                           
                       <div class="clearfix"></div>

@@ -2,7 +2,7 @@
 
 include '../../site/connect.php';
 include 'header.php';
-$ayarlar=$db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
+$ayarlar=$db->query("SELECT * FROM section")->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -30,19 +30,6 @@ $ayarlar=$db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>İçerik Ayarları 
-                                        <small>
-                                        <?php
-                                        if ($_GET['durum']=='ok') {
-                                        ?>
-                                            <b style="color:green">Başarıyla Güncellendi</b>
-                                        <?php
-                                        } elseif ($_GET['durum']=='no') {
-                                        ?>
-                                            <b style="color:red">Başarıyla Güncellenemedi</b>
-                                        <?php    
-                                        }
-                                        ?>
-                                        </small>
                                     </h2>
                                    
                                      <div class="clearfix"></div>
@@ -53,26 +40,26 @@ $ayarlar=$db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">İçerik Fotoğrafı <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="ayar_title" required="required" placeholder="içerik fotoğrafı ekleyiniz..." class="form-control col-md-7 col-xs-12">
+                                            <input type="text" name="section_fotograf" required="required" placeholder="içerik fotoğrafı ekleyiniz..." class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">İçerik Başlığı  <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="ayar_description" required="required" placeholder="içerik başlığı ekleyiniz..." class="form-control col-md-7 col-xs-12">
+                                            <input type="text" name="section_baslik" required="required" placeholder="içerik başlığı ekleyiniz..." class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">İçerik Açıklaması <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="ayar_keywords" required="required" placeholder="içerik açıklaması ekleyiniz" class="form-control col-md-7 col-xs-12">
+                                            <input type="text" name="section_aciklama" required="required" placeholder="içerik açıklaması ekleyiniz" class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="form-group" >
                                             <div align="right" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                                <button type="submit" name="genelayarkaydet" class="btn btn-primary">Ekle</button>
+                                                <button type="submit" name="sectionekle" class="btn btn-primary">Ekle</button>
                                             </div>
                                         </div>
                                     </form>
