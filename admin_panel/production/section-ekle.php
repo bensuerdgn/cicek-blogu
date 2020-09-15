@@ -44,70 +44,35 @@ $ayarlar=$db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
                                         ?>
                                         </small>
                                     </h2>
-                                    <ul class="nav navbar-right panel_toolbox">
-                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                        </li>
-                                        <li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Settings 1</a>
-                                                </li>
-                                                <li><a href="#">Settings 2</a>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                        </li>
-                                    </ul>
+                                   
                                      <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                     <form action="../../site/islem.php" method="POST" class="form-horizontal form-label-left input_mask">
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Site başlığı <span class="required">*</span>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">İçerik Fotoğrafı <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="ayar_title" required="required" value="<?php echo $ayarlar['ayar_title']; ?>" class="form-control col-md-7 col-xs-12">
+                                            <input type="text" name="ayar_title" required="required" placeholder="içerik fotoğrafı ekleyiniz..." class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Site Açıklaması  <span class="required">*</span>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">İçerik Başlığı  <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="ayar_description" required="required" value="<?php echo $ayarlar['ayar_description']; ?>" class="form-control col-md-7 col-xs-12">
+                                            <input type="text" name="ayar_description" required="required" placeholder="içerik başlığı ekleyiniz..." class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Site Anahtar Kelimesi <span class="required">*</span>
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">İçerik Açıklaması <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="ayar_keywords" required="required" value="<?php echo $ayarlar['ayar_keywords']; ?>" class="form-control col-md-7 col-xs-12">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Siteyi Yazan <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="ayar_author" required="required" value="<?php echo $ayarlar['ayar_author']; ?>" class="form-control col-md-7 col-xs-12">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Site Logosu  <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="site_logo" required="required" value="<?php echo $ayarlar['site_logo']; ?>" class="form-control col-md-7 col-xs-12">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Site Açıklaması <span class="required">*</span>
-                                            </label>
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="site_aciklama" required="required" value="<?php echo $ayarlar['site_aciklama']; ?>" class="form-control col-md-7 col-xs-12">
+                                            <input type="text" name="ayar_keywords" required="required" placeholder="içerik açıklaması ekleyiniz" class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="form-group" >
                                             <div align="right" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                                <button type="submit" name="genelayarkaydet" class="btn btn-primary">Güncelle</button>
+                                                <button type="submit" name="genelayarkaydet" class="btn btn-primary">Ekle</button>
                                             </div>
                                         </div>
                                     </form>

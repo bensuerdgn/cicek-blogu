@@ -31,10 +31,9 @@
                         <table class="table table-striped jambo_table bulk_action">
                           <thead>
                               <tr class="headings">
-                                <th class="column-title">Id </th>
-                                <th class="column-title">İçerik Fotoğraf </th>
-                                <th class="column-title">İçerik Başlık </th>
-                                <th class="column-title">İçerik Açıklama</th>
+                                <th class="column-title">İçerik Fotoğrafı </th>
+                                <th class="column-title">İçerik Başlığı </th>
+                                <th class="column-title">İçerik Açıklaması</th>
                                 <th class="column-title"> </th>
                                 <th class="column-title"> </th>
                                 <th class="bulk-actions" colspan="7">
@@ -44,7 +43,6 @@
                           </thead>
                           <tbody>
                               <tr class="even pointer">
-                                <td class=" "></td>
                                 <td class=" "></td>
                                 <td class=" "></td>
                                 <td class=" "></td>
