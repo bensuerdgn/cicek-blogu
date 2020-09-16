@@ -32,15 +32,16 @@ $ayarlar=$db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
                                     <h2>Genel Ayarlar 
                                         <small>
                                         <?php
-                                        if ($_GET['durum']=='ok') {
+                                        if(isset($_GET['durum'])){
+                                          if ($_GET['durum']=='ok') {
                                         ?>
                                             <b style="color:green">Başarıyla Güncellendi</b>
                                         <?php
-                                        } elseif ($_GET['durum']=='no') {
+                                       } elseif ($_GET['durum']=='no') {
                                         ?>
                                             <b style="color:red">Başarıyla Güncellenemedi</b>
                                         <?php    
-                                        }
+                                        }}
                                         ?>
                                         </small>
                                     </h2>

@@ -23,18 +23,20 @@ include '../../site/connect.php';
                     <div class="x_title">
                         <h2>İçerik Ayarları
                         <small>
-                                        <?php
-                                          if ($_GET['durum'] == 'ok') {
-                                              ?>
-                                            <b style="color:green">Başarıyla Eklendi</b>
-                                        <?php
-                                          } elseif ($_GET['durum'] == 'no') {
-                                              ?>
-                                            <b style="color:red">Başarıyla Eklenemedi</b>
-                                        <?php
-                                            }
-                                            ?>
-                                        </small>
+                              <?php
+                                if(isset($_GET['durum'])){
+                                 if ($_GET['durum'] == 'ok') {
+                              ?>
+                              <b style="color:green">İşlem Başarılı</b>
+                              <?php
+                                } elseif ($_GET['durum'] == 'no') {
+                              ?>
+                              <b style="color:red">İşlem Başalı Değil</b>
+                              <?php
+                                }
+                               }
+                              ?>
+                          </small>
                         </h2>
                       <div align="right" >
                         <a href="section_ekle.php"><button  class="btn btn-primary " ><i class="fa fa-plus" aria-hidden="true" ></i> Yeni Ekle</button></a>
@@ -47,11 +49,11 @@ include '../../site/connect.php';
                         <table class="table table-striped jambo_table bulk_action">
                           <thead>
                               <tr class="headings">
-                                <th class="column-title">İçerik Fotoğrafı </th>
-                                <th class="column-title">İçerik Başlığı </th>
-                                <th class="column-title">İçerik Açıklaması</th>
-                                <th class="column-title"> </th>
-                                <th class="column-title"> </th>
+                                <th class="column-title text-center">İçerik Fotoğrafı </th>
+                                <th class="column-title text-center">İçerik Başlığı </th>
+                                <th class="column-title text-center">İçerik Açıklaması</th>
+                                <th class="column-title text-center"> </th>
+                                <th class="column-title text-center"> </th>
                                 <th class="bulk-actions" colspan="7">
                                   <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                                 </th>
@@ -59,16 +61,16 @@ include '../../site/connect.php';
                           </thead>
                           <tbody>
                             <?php
-                            $sectionsor=$db->prepare("SELECT * FROM section ORDER BY id DESC");
+                            $sectionsor=$db->prepare("SELECT * FROM section ORDER BY section_id DESC");
                             $sectionsor->execute();
                             while ($sectioncek=$sectionsor->fetch(PDO::FETCH_ASSOC)) {
                             ?>            
                               <tr class="even pointer">
-                                <td class=" "><?php echo $sectioncek['section_fotograf'] ?></td>
+                                <td class=" "><img width="100" height="100" src="<?php echo $sectioncek['section_fotograf'] ?>" alt=""></td>
                                 <td class=" "><?php echo $sectioncek['section_baslik'] ?></td>
                                 <td class=" "><?php echo $sectioncek['section_aciklama'] ?></td>
-                                <td class=" "><button style="width:80px;" class="btn btn-success btn-xs" ><i class="fa fa-pencil" aria-hidden="true" ></i> Düzenle</button></td>
-                                <td class=" "><button style="width:80px;" class="btn btn-danger btn-xs" ><i class="fa fa-trash" aria-hidden="true" ></i> Sil</button></td>
+                                <td class=" "><a href="section_duzenle.php?icerikduzenle=ok&section_id=<?php echo $sectioncek['section_id']; ?>"><button style="width:80px;" class="btn btn-success btn-xs" ><i class="fa fa-pencil" aria-hidden="true" ></i> Düzenle</button></a></td>
+                                <td class=" "><a href="../../site/islem.php?iceriksil=ok&section_id=<?php echo $sectioncek['section_id']; ?>"><button style="width:80px;" class="btn btn-danger btn-xs" ><i class="fa fa-trash" aria-hidden="true" ></i> Sil</button></a></td>
                               </tr>
                             <?php } ?>
                             </tbody>

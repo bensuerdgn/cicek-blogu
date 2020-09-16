@@ -9,7 +9,7 @@ if (isset($_POST['genelayarkaydet'])) {
         ayar_author=:author,
         site_logo=:logo,
         site_aciklama=:aciklama
-        WHERE id=1");
+        WHERE ayar_id=1");
     $update = $genelayarkaydet->execute([
         'title' => $_POST['ayar_title'],
         'descript' => $_POST['ayar_description'],
@@ -46,3 +46,35 @@ if (isset($_POST['sectionekle'])) {
 } else {
     echo "noooo";
 }
+
+if ($_GET['iceriksil'] == 'ok') {
+    $sil = $db->prepare('DELETE FROM section WHERE section_id=:section_id');
+    $kontrol = $sil->execute([
+        'section_id' => $_GET['section_id'],
+    ]);
+    if ($kontrol) {
+        header("Location:../admin_panel/production/section_ayar.php?durum=ok");
+    } else {
+        header("Location:../admin_panel/production/section_ayar.php?durum=no");
+    }
+}
+if (isset($_POST['sectionduzenle'])) {
+    $duzenle = $db->prepare("UPDATE section SET
+        section_fotograf=:fotograf,
+        section_baslik=:baslik,
+        section_aciklama=:aciklama,
+        WHERE section_id={$_POST['section_id']}
+");
+    $update2 = $duzenle->execute([
+        'fotograf' => $_POST['section_fotograf'],
+        'baslik' => $_POST['section_baslik'],
+        'aciklama' => $_POST['section_aciklama'],
+    ]);
+    $section_id=$_POST['section_id'];
+    if ($update2) {
+        header("Location:../admin_panel/production/section_duzenle.php?section_id=$section_id&durum=ok");
+    } else {
+        header("Location:../admin_panel/production/section_duzenle.php?section_id=$section_id&durum=no");
+
+    }
+} 
