@@ -1,29 +1,16 @@
 <?php
 include "../pdo/connect.php";
-if (isset($_GET['section_id'])) {
-    $section_query = $db->prepare("SELECT * FROM section WHERE section_id=?");
-    $section_query->execute([
-        $_GET['section_id'],
-    ]);
-    $section=$section_query->fetch(PDO::FETCH_ASSOC);
-}
+
 
 
 if (isset($_GET['recentpost_id'])) {
     $recentpost_query = $db->prepare("SELECT * FROM recentpost WHERE recentpost_id=?");
     $recentpost_query->execute([
-        $_GET['recentpost_id'],
+    $_GET['recentpost_id'],
 ]);
 $recentpost=$recentpost_query->fetch(PDO::FETCH_ASSOC);
 }
 
-if (isset($_GET['latestpost_id'])) {
-    $latestpost_query = $db->prepare("SELECT * FROM latestpost WHERE latestpost_id=?");
-    $latestpost_query->execute([
-    $_GET['latestpost_id'],
-]);
-$latestpost=$latestpost_query->fetch(PDO::FETCH_ASSOC);
-}
 
 $ayarlar=$db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
 $latestpost2 = $db->query("SELECT * FROM latestpost");
@@ -65,14 +52,14 @@ $footertags = $db->query("SELECT * FROM footertags");
         <section>
             <div class="content">
                 <div class="content-box">
-                    <div class="img"><img src="<?php echo $section["section_fotograf"]; ?>"
+                    <div class="img"><img src="<?php echo $recentpost["recent_fotograf"]; ?>"
                             alt="turuncu çiçek"></div>
                     <div class="box-info">
-                        <div class="box-title"><a href="index.php?sayfa=blog&section_id=<?php echo $row['section_id']; ?>">
-                                <h2><?php echo $section["section_baslik"]; ?></h2>
+                        <div class="box-title"><a href="index.php?sayfa=recentpost_detay&recent_id=<?php echo $row['recent_id']; ?>">
+                                <h2><?php echo $recentpost["recent_baslik"]; ?></h2>
                             </a></div>
                         <div class="box-text">
-                            <p><?php echo $section["section_aciklama"]; ?></p>
+                            <p><?php echo $recentpost["recent_aciklama"]; ?></p>
                         </div>
                     </div>
                 </div>
@@ -84,7 +71,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     ?>
                     <div class="latest-posts">
                         <div class="latest-posts-img">
-                            <a href=" index.php?sayfa=blog&latestpost_id=<?php echo $row['latestpost_id']; ?>"> <img src="<?php echo $row["latest_fotograf"]; ?>"></a>
+                            <a href=" index.php?sayfa=latestpost_detay&latestpost_id=<?php echo $row['latestpost_id']; ?>"> <img src="<?php echo $row["latest_fotograf"]; ?>"></a>
                         </div>
                         <div class="latest-post-title">
                             <p><?php echo $row["latest_baslik"]; ?></p>
@@ -117,7 +104,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
-                            <a href="index.php?sayfa=blog&recentpost_id=<?php echo $row['recentpost_id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
+                            <a href="index.php?sayfa=recentpost_detay&recentpost_id=<?php echo $row['recentpost_id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
                         </div>
                         <div class="recent-post-title">
                             <p><?php echo $row["recent_baslik"]; ?></p>

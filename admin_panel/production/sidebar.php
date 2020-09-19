@@ -8,7 +8,7 @@
             <ul class="nav child_menu">
               <li><a href="genel_ayar.php">Genel Ayarlar</a></li>
               <li><a href="section_ayar.php">İçerik Ayarları</a></li>
-              <li><a href="index3.html">Dashboard3</a></li>
+              <li><a href="index3.html">Son Başlık Ayarları</a></li>
             </ul>
           </li>
         

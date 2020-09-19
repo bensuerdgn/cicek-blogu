@@ -18,7 +18,13 @@ switch ($_GET['sayfa']) {
     case 'homepage';
         require_once 'homepage.php';
         break;
-    case 'blog';
-        require_once 'blog.php';
+    case 'section_detay';
+        require_once 'section_detay.php';
+        break;
+    case 'recentpost_detay';
+        require_once 'recentpost_detay.php';
+        break;
+    case 'latestpost_detay';
+        require_once 'latestpost_detay.php';
         break;
 }
