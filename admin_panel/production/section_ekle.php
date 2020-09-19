@@ -1,6 +1,6 @@
 <?php 
 
-include '../../site/connect.php';
+include '../../pdo/connect.php';
 include 'header.php';
 $ayarlar=$db->query("SELECT * FROM section")->fetch(PDO::FETCH_ASSOC);
 
@@ -35,7 +35,7 @@ $ayarlar=$db->query("SELECT * FROM section")->fetch(PDO::FETCH_ASSOC);
                                      <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <form action="../../site/islem.php" method="POST" class="form-horizontal form-label-left input_mask">
+                                    <form action="../../pdo/sectionekle.php" method="POST" class="form-horizontal form-label-left input_mask">
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">İçerik Fotoğrafı <span class="required">*</span>
                                             </label>

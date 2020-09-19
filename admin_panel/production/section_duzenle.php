@@ -1,11 +1,11 @@
 <?php 
-
-include '../../site/connect.php';
 include 'header.php';
+
+include '../../pdo/connect.php';  
 $sectionsor = $db->prepare('SELECT * FROM section WHERE section_id=:section_id');
 $sectionsor->execute([
-    'section_id' => $_GET['section_id'],
-]);
+        'section_id' => $_GET['section_id']
+    ]);
 $sectioncek=$sectionsor->fetch(PDO::FETCH_ASSOC);
 ?>
 
@@ -33,12 +33,25 @@ $sectioncek=$sectionsor->fetch(PDO::FETCH_ASSOC);
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>İçerik Ayarları 
+                                    <?php
+                                        if(isset($_GET['durum'])){
+                                          if ($_GET['durum']=='ok') {
+                                        ?>
+                                            <b style="color:green">Güncelleme Başarılı</b>
+                                        <?php
+                                       } elseif ($_GET['durum']=='no') {
+                                        ?>
+                                            <b style="color:red">Güncelleme Başarılı Değil</b>
+                                        <?php    
+                                        }}
+                                        ?>
+                                        </small>
                                     </h2>
                                    
                                      <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <form action="../../site/islem.php" method="POST" class="form-horizontal form-label-left input_mask">
+                                    <form action="../../pdo/sectionduzenle.php" method="POST" class="form-horizontal form-label-left input_mask">
                                     <input type="hidden" name="section_id" value="<?php echo $sectioncek['section_id'] ?>">
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">İçerik Fotoğrafı <span class="required">*</span>

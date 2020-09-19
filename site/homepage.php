@@ -1,6 +1,6 @@
 
 <?php
-include "connect.php";
+include "../pdo/connect.php";
 $ayarlar=$db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
 $nav = $db->query("SELECT * FROM nav");
 $section = $db->query("SELECT * FROM section");
@@ -71,7 +71,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                         </div>
                         <div class="box-info">
                             <div class="box-title">
-                                <a href="index.php?sayfa=blog&id=<?php echo $row['id']; ?>">
+                                <a href="index.php?sayfa=blog&section_id=<?php echo $row['section_id']; ?>">
                                     <h2><?php echo $row["section_baslik"]; ?></h2>
                                 </a>
                             </div>
@@ -112,8 +112,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
-                            <a href="index.php?sayfa=blog&id=<?php echo $row['id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"
-                                    ></a>
+                            <a href="index.php?sayfa=blog&recentpost_id=<?php echo $row['recentpost_id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
                         </div>
                         <div class="recent-post-title">
                             <p><?php echo $row["recent_baslik"]; ?></p>

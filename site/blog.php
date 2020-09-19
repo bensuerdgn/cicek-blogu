@@ -1,20 +1,33 @@
 <?php
-include "connect.php";
-if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header('Location:index.php');
-    exit;
+include "../pdo/connect.php";
+if (isset($_GET['section_id'])) {
+    $section_query = $db->prepare("SELECT * FROM section WHERE section_id=?");
+    $section_query->execute([
+        $_GET['section_id'],
+    ]);
+    $section=$section_query->fetch(PDO::FETCH_ASSOC);
+}
+
+
+if (isset($_GET['recentpost_id'])) {
+    $recentpost_query = $db->prepare("SELECT * FROM recentpost WHERE recentpost_id=?");
+    $recentpost_query->execute([
+        $_GET['recentpost_id'],
+]);
+$recentpost=$recentpost_query->fetch(PDO::FETCH_ASSOC);
+}
+
+if (isset($_GET['latestpost_id'])) {
+    $latestpost_query = $db->prepare("SELECT * FROM latestpost WHERE latestpost_id=?");
+    $latestpost_query->execute([
+    $_GET['latestpost_id'],
+]);
+$latestpost=$latestpost_query->fetch(PDO::FETCH_ASSOC);
 }
 
 $ayarlar=$db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
-
-$section_query = $db->prepare("SELECT * FROM section WHERE id=?");
-$section_query->execute([
-    $_GET['id'],
-]);
-$section=$section_query->fetch(PDO::FETCH_ASSOC);
-
-$latestpost = $db->query("SELECT * FROM latestpost");
-$recentpost = $db->query("SELECT * FROM recentpost");
+$latestpost2 = $db->query("SELECT * FROM latestpost");
+$recentpost2 = $db->query("SELECT * FROM recentpost");
 $footertags = $db->query("SELECT * FROM footertags");
 
 ?>
@@ -55,7 +68,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     <div class="img"><img src="<?php echo $section["section_fotograf"]; ?>"
                             alt="turuncu çiçek"></div>
                     <div class="box-info">
-                        <div class="box-title"><a href="index.php?sayfa=blog&id=<?php echo $row['id']; ?>">
+                        <div class="box-title"><a href="index.php?sayfa=blog&section_id=<?php echo $row['section_id']; ?>">
                                 <h2><?php echo $section["section_baslik"]; ?></h2>
                             </a></div>
                         <div class="box-text">
@@ -66,12 +79,12 @@ $footertags = $db->query("SELECT * FROM footertags");
                 <div class="blog-latest-posts">
                     <h2>Son Postlar</h2>
                     <?php
-                        if ($latestpost->rowCount()) {
-                            foreach($latestpost as $row){
+                        if ($latestpost2->rowCount()) {
+                            foreach($latestpost2 as $row){
                     ?>
                     <div class="latest-posts">
                         <div class="latest-posts-img">
-                            <a href=" index.php?sayfa=blog&id=<?php echo $row['id']; ?>"> <img src="<?php echo $row["latest_fotograf"]; ?>"></a>
+                            <a href=" index.php?sayfa=blog&latestpost_id=<?php echo $row['latestpost_id']; ?>"> <img src="<?php echo $row["latest_fotograf"]; ?>"></a>
                         </div>
                         <div class="latest-post-title">
                             <p><?php echo $row["latest_baslik"]; ?></p>
@@ -99,12 +112,12 @@ $footertags = $db->query("SELECT * FROM footertags");
                 <div class="footer-recent-posts">
                     <h2>Öne Çıkanlar</h2>
                     <?php
-                        if ($recentpost->rowCount()) {
-                            foreach($recentpost as $row){
+                        if ($recentpost2->rowCount()) {
+                            foreach($recentpost2 as $row){
                     ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
-                            <a href="index.php?sayfa=blog&id=<?php echo $row['id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
+                            <a href="index.php?sayfa=blog&recentpost_id=<?php echo $row['recentpost_id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
                         </div>
                         <div class="recent-post-title">
                             <p><?php echo $row["recent_baslik"]; ?></p>

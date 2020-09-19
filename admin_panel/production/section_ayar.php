@@ -1,5 +1,6 @@
-<?php include 'header.php';
-include '../../site/connect.php';
+<?php 
+include 'header.php';
+include '../../pdo/connect.php';
 ?>
  
         <!-- page content -->
@@ -31,7 +32,7 @@ include '../../site/connect.php';
                               <?php
                                 } elseif ($_GET['durum'] == 'no') {
                               ?>
-                              <b style="color:red">İşlem Başalı Değil</b>
+                              <b style="color:red">İşlem Başarılı Değil</b>
                               <?php
                                 }
                                }
@@ -69,8 +70,8 @@ include '../../site/connect.php';
                                 <td class=" "><img width="100" height="100" src="<?php echo $sectioncek['section_fotograf'] ?>" alt=""></td>
                                 <td class=" "><?php echo $sectioncek['section_baslik'] ?></td>
                                 <td class=" "><?php echo $sectioncek['section_aciklama'] ?></td>
-                                <td class=" "><a href="section_duzenle.php?icerikduzenle=ok&section_id=<?php echo $sectioncek['section_id']; ?>"><button style="width:80px;" class="btn btn-success btn-xs" ><i class="fa fa-pencil" aria-hidden="true" ></i> Düzenle</button></a></td>
-                                <td class=" "><a href="../../site/islem.php?iceriksil=ok&section_id=<?php echo $sectioncek['section_id']; ?>"><button style="width:80px;" class="btn btn-danger btn-xs" ><i class="fa fa-trash" aria-hidden="true" ></i> Sil</button></a></td>
+                                <td class=" "><a href="section_duzenle.php?section_id=<?php echo $sectioncek['section_id']; ?>"><button style="width:80px;" class="btn btn-success btn-xs" ><i class="fa fa-pencil" aria-hidden="true" ></i> Düzenle</button></a></td>
+                                <td class=" "><a href="../../pdo/sectionsil.php?sectionsil=ok&section_id=<?php echo $sectioncek['section_id']; ?>"><button style="width:80px;" class="btn btn-danger btn-xs" ><i class="fa fa-trash" aria-hidden="true" ></i> Sil</button></a></td>
                               </tr>
                             <?php } ?>
                             </tbody>

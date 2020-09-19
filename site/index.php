@@ -1,7 +1,7 @@
 <?php
 ob_start();
 
-require_once 'connect.php';
+include "../pdo/connect.php";
 
 $_GET = array_map(function ($get) {
     return htmlspecialchars(trim($get));
