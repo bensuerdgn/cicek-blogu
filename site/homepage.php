@@ -35,8 +35,8 @@ $footertags = $db->query("SELECT * FROM footertags");
                         <h1><?php echo $ayarlar['site_logo'] ?></h1>
                     </div>
                     <div class="blog-choice">
-                        <a href="#">Anasayfa</a>
-                        <a href="#">Çiçek Galerisi</a>
+                        <a href="index.php">Anasayfa</a>
+                        <a href="cicekgalerisi.php">Çiçek Galerisi</a>
                     </div>
 
                 </div>

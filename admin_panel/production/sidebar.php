@@ -11,6 +11,9 @@
               <li><a href="recentpost_ayar.php">Öne Çıkan Başlık Ayarları</a></li>
               <li><a href="latestpost_ayar.php">Son Başlık Ayarları</a></li>
               <li><a href="nav_ayar.php">Kategori Ayarları</a></li>
+              <li><a href="footertags_ayar.php">Footertags Ayarları</a></li>
+              <li><a href="cicekgalerisi_ayar.php">Çiçek Galerisi Ayarları</a></li>
+
             </ul>
           </li>
 

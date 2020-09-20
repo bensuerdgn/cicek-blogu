@@ -40,7 +40,7 @@ include '../../pdo/connect.php';
                           </small>
                         </h2>
                       <div align="right" >
-                      <a href="nav_ekle.php"><button  class="btn btn-primary " ><i class="fa fa-plus" aria-hidden="true" ></i> Yeni Ekle</button></a>
+                      <a href="footertag_ekle.php"><button  class="btn btn-primary " ><i class="fa fa-plus" aria-hidden="true" ></i> Yeni Ekle</button></a>
 
                       </div>
 
@@ -61,13 +61,13 @@ include '../../pdo/connect.php';
                           </thead>
                           <tbody>
                             <?php
-                            $navsor=$db->prepare("SELECT * FROM nav ORDER BY nav_id DESC");
-                            $navsor->execute();
-                            while ($navcek=$navsor->fetch(PDO::FETCH_ASSOC)) {
+                            $footertagsor=$db->prepare("SELECT * FROM footertags ORDER BY footertag_id DESC");
+                            $footertagsor->execute();
+                            while ($footertagcek=$footertagsor->fetch(PDO::FETCH_ASSOC)) {
                             ?>            
                               <tr class="even pointer">
-                                <td align="center" class=" "><?php echo $navcek['nav_tag'] ?></td>
-                                <td class=" "><a href="../../pdo/navsil.php?navsil=ok&nav_id=<?php echo $navcek['nav_id']; ?>"><button style="width:80px;" class="btn btn-danger btn-xs" ><i class="fa fa-trash" aria-hidden="true" ></i> Sil</button></a></td>
+                                <td align="center" class=" "><?php echo $footertagcek['footer_tag'] ?></td>
+                                <td class=" "><a href="../../pdo/footertagsil.php?footertagsil=ok&footertag_id=<?php echo $footertagcek['footertag_id']; ?>"><button style="width:80px;" class="btn btn-danger btn-xs" ><i class="fa fa-trash" aria-hidden="true" ></i> Sil</button></a></td>
                               </tr>
                             <?php } ?>
                             </tbody>

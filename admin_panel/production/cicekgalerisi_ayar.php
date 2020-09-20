@@ -22,7 +22,7 @@ include '../../pdo/connect.php';
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
-                        <h2>Kategori Ayarları
+                        <h2>Çiçek Galerisi Ayarları
                         <small>
                               <?php
                                 if(isset($_GET['durum'])){
@@ -40,7 +40,7 @@ include '../../pdo/connect.php';
                           </small>
                         </h2>
                       <div align="right" >
-                      <a href="nav_ekle.php"><button  class="btn btn-primary " ><i class="fa fa-plus" aria-hidden="true" ></i> Yeni Ekle</button></a>
+                      <a href="cicekgalerisi_ekle.php"><button  class="btn btn-primary " ><i class="fa fa-plus" aria-hidden="true" ></i> Yeni Ekle</button></a>
 
                       </div>
 
@@ -51,7 +51,7 @@ include '../../pdo/connect.php';
                         <table class="table table-striped jambo_table bulk_action">
                           <thead>
                               <tr class="headings">
-                                <th class="column-title text-center">Kategori Adı </th>
+                                <th class="column-title text-center">Çiçek Fotoğrafı</th>
                                 <th class="column-title text-center"> </th>
                                 <th class="column-title text-center"> </th>
                                 <th class="bulk-actions" colspan="7">
@@ -61,13 +61,13 @@ include '../../pdo/connect.php';
                           </thead>
                           <tbody>
                             <?php
-                            $navsor=$db->prepare("SELECT * FROM nav ORDER BY nav_id DESC");
-                            $navsor->execute();
-                            while ($navcek=$navsor->fetch(PDO::FETCH_ASSOC)) {
+                            $ciceksor=$db->prepare("SELECT * FROM cicek_galerisi ORDER BY cicekgalerisi_id DESC");
+                            $ciceksor->execute();
+                            while ($cicekcek=$ciceksor->fetch(PDO::FETCH_ASSOC)) {
                             ?>            
                               <tr class="even pointer">
-                                <td align="center" class=" "><?php echo $navcek['nav_tag'] ?></td>
-                                <td class=" "><a href="../../pdo/navsil.php?navsil=ok&nav_id=<?php echo $navcek['nav_id']; ?>"><button style="width:80px;" class="btn btn-danger btn-xs" ><i class="fa fa-trash" aria-hidden="true" ></i> Sil</button></a></td>
+                                <td align="center" class=" "><img width="100" height="100" src="<?php echo $cicekcek['cicekgalerisi_fotograf'] ?>" alt=""></td>
+                                <td class=" "><a href="../../pdo/cicekgalerisisil.php?cicekgalerisisil=ok&cicekgalerisi_id=<?php echo $cicekcek['cicekgalerisi_id']; ?>"><button style="width:80px;" class="btn btn-danger btn-xs" ><i class="fa fa-trash" aria-hidden="true" ></i> Sil</button></a></td>
                               </tr>
                             <?php } ?>
                             </tbody>
