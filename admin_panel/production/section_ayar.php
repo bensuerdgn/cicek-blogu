@@ -67,11 +67,11 @@ include '../../pdo/connect.php';
                             while ($sectioncek=$sectionsor->fetch(PDO::FETCH_ASSOC)) {
                             ?>            
                               <tr class="even pointer">
-                                <td class=" "><img width="100" height="100" src="<?php echo $sectioncek['section_fotograf'] ?>" alt=""></td>
-                                <td class=" "><?php echo $sectioncek['section_baslik'] ?></td>
-                                <td class=" "><?php echo $sectioncek['section_aciklama'] ?></td>
-                                <td class=" "><a href="section_duzenle.php?section_id=<?php echo $sectioncek['section_id']; ?>"><button style="width:80px;" class="btn btn-success btn-xs" ><i class="fa fa-pencil" aria-hidden="true" ></i> Düzenle</button></a></td>
-                                <td class=" "><a href="../../pdo/sectionsil.php?sectionsil=ok&section_id=<?php echo $sectioncek['section_id']; ?>"><button style="width:80px;" class="btn btn-danger btn-xs" ><i class="fa fa-trash" aria-hidden="true" ></i> Sil</button></a></td>
+                                <td align="center" class=" "><img width="100" height="100" src="<?php echo $sectioncek['section_fotograf'] ?>" alt=""></td>
+                                <td align="center" class=" "><?php echo $sectioncek['section_baslik'] ?></td>
+                                <td align="center" class=" "><?php echo $sectioncek['section_aciklama'] ?></td>
+                                <td align="center" class=" "><a href="section_duzenle.php?section_id=<?php echo $sectioncek['section_id']; ?>"><button style="width:80px;" class="btn btn-success btn-xs" ><i class="fa fa-pencil" aria-hidden="true" ></i> Düzenle</button></a></td>
+                                <td align="center" class=" "><a href="../../pdo/sectionsil.php?sectionsil=ok&section_id=<?php echo $sectioncek['section_id']; ?>"><button style="width:80px;" class="btn btn-danger btn-xs" ><i class="fa fa-trash" aria-hidden="true" ></i> Sil</button></a></td>
                               </tr>
                             <?php } ?>
                             </tbody>

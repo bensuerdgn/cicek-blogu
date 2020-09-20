@@ -53,7 +53,6 @@ include '../../pdo/connect.php';
                               <tr class="headings">
                                 <th class="column-title text-center">Kategori Adı </th>
                                 <th class="column-title text-center"> </th>
-                                <th class="column-title text-center"> </th>
                                 <th class="bulk-actions" colspan="7">
                                   <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
                                 </th>

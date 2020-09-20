@@ -67,11 +67,11 @@ include '../../pdo/connect.php';
                             while ($recentpostcek=$recentpostsor->fetch(PDO::FETCH_ASSOC)) {
                             ?>            
                               <tr class="even pointer">
-                                <td class=" "><img width="100" height="100" src="<?php echo $recentpostcek['recent_fotograf'] ?>" alt=""></td>
-                                <td class=" "><?php echo $recentpostcek['recent_baslik'] ?></td>
-                                <td class=" "><?php echo $recentpostcek['recent_aciklama'] ?></td>
-                                <td class=" "><a href="recentpost_duzenle.php?recentpost_id=<?php echo $recentpostcek['recentpost_id']; ?>"><button style="width:80px;" class="btn btn-success btn-xs" ><i class="fa fa-pencil" aria-hidden="true" ></i> Düzenle</button></a></td>
-                                <td class=" "><a href="../../pdo/recentpostsil.php?recentpostsil=ok&recentpost_id=<?php echo $recentpostcek['recentpost_id']; ?>"><button style="width:80px;" class="btn btn-danger btn-xs" ><i class="fa fa-trash" aria-hidden="true" ></i> Sil</button></a></td>
+                                <td align="center" class=" "><img width="100" height="100" src="<?php echo $recentpostcek['recent_fotograf'] ?>" alt=""></td>
+                                <td align="center" class=" "><?php echo $recentpostcek['recent_baslik'] ?></td>
+                                <td align="center" class=" "><?php echo $recentpostcek['recent_aciklama'] ?></td>
+                                <td align="center" class=" "><a href="recentpost_duzenle.php?recentpost_id=<?php echo $recentpostcek['recentpost_id']; ?>"><button style="width:80px;" class="btn btn-success btn-xs" ><i class="fa fa-pencil" aria-hidden="true" ></i> Düzenle</button></a></td>
+                                <td align="center" class=" "><a href="../../pdo/recentpostsil.php?recentpostsil=ok&recentpost_id=<?php echo $recentpostcek['recentpost_id']; ?>"><button style="width:80px;" class="btn btn-danger btn-xs" ><i class="fa fa-trash" aria-hidden="true" ></i> Sil</button></a></td>
                               </tr>
                             <?php } ?>
                             </tbody>

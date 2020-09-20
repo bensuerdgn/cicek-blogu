@@ -27,4 +27,7 @@ switch ($_GET['sayfa']) {
     case 'latestpost_detay';
         require_once 'latestpost_detay.php';
         break;
+        case 'tag_detay';
+        require_once 'tag_detay.php';
+        break;
 }
