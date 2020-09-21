@@ -6,7 +6,7 @@ if (isset($_POST['sectionduzenle'])) {
     $duzenle = $db->prepare("UPDATE section SET
         section_fotograf=:fotograf,
         section_baslik=:baslik,
-        section_aciklama=:aciklama,
+        section_aciklama=:aciklama
         WHERE section_id=$section_id");
     $update = $duzenle->execute([
         'fotograf' => $_POST['section_fotograf'],
@@ -15,9 +15,9 @@ if (isset($_POST['sectionduzenle'])) {
     ]);
     
     if ($update) {
-        header("Location:../admin_panel/production/section_duzenle?section_id=$section_id&durum=ok");
+        header("Location:../admin_panel/production/section_duzenle.php?section_id=$section_id&durum=ok");
     } else {
-        header("Location:../admin_panel/production/section_duzenle?section_id=$section_id&durum=no");
+        header("Location:../admin_panel/production/section_duzenle.php?section_id=$section_id&durum=no");
     }
 
 }
