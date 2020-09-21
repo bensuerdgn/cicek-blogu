@@ -19,7 +19,7 @@ $cicekgalerisi = $db->query("SELECT * FROM cicek_galerisi");
     <meta name="keywords" content="<?php echo $ayarlar['ayar_keywords'] ?>">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="blog.css">
+    <link rel="stylesheet" href="cicekgalerisi.css">
 
     <script src="https://kit.fontawesome.com/8bbf8c5eb9.js" crossorigin="anonymous"></script>
 

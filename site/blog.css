@@ -67,6 +67,7 @@ p {
 }
 .content-box .img img {
   width: 100%;
+  border-radius: 40px;
 }
 .content-box .box-info {
   width: 100%;

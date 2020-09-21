@@ -125,7 +125,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                         if ($footertags->rowCount()) {
                             foreach($footertags as $row){
                     ?>
-                        <a href="#"><?php echo $row["footer_tag"] ?></a>
+                        <a href="index.php?sayfa=tag_detay&tag=<?php echo $row["footer_tag"] ?>"><?php echo $row["footer_tag"] ?></a>
                     <?php 
                         }
                             }
