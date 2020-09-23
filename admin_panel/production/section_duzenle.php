@@ -47,7 +47,13 @@ $sectioncek=$sectionsor->fetch(PDO::FETCH_ASSOC);
                                         ?>
                                         </small>
                                     </h2>
-                                   
+                                    <div align="right" >
+                                        <a href="section_ayar.php">
+                                            <button class="btn btn-warning">
+                                                <i class="fa fa-undo" aria-hidden="true">  Geri Dön</i>
+                                            </button>
+                                        </a>
+                                    </div>
                                      <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
