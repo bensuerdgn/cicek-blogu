@@ -1,6 +1,17 @@
 <?php 
 include 'header.php';
 include '../../pdo/connect.php';
+
+if (isset($_POST['arama'])) {
+  $aranan=$_POST['aranan'];
+  $latestpostsor=$db->prepare("SELECT * FROM latestpost WHERE latest_baslik LIKE '%$aranan%' ORDER BY latestpost_id DESC");
+  $latestpostsor->execute();
+  $say=$latestpostsor->rowCount();
+}else {
+  $latestpostsor=$db->prepare("SELECT * FROM latestpost ORDER BY latestpost_id DESC");
+  $latestpostsor->execute();
+  $say=$latestpostsor->rowCount();
+}
 ?>
  
         <!-- page content -->
@@ -10,20 +21,25 @@ include '../../pdo/connect.php';
             </div>
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Anahtar Kelime Gir...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Ara!</button>
-                    </span>
-                  </div>
+                  <form action="" method="post">
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="aranan" placeholder="Anahtar Kelime Giriniz...">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" name="arama" type="submit">Ara!</button>
+                      </span>
+                    </div>
+                  </form>
                 </div>
             </div>
             <div class="x_content">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
-                        <h2>Son Başlık Ayarları
+                        <h2>Son Başlık Ayarları   &nbsp  &nbsp
+                          <?php if(isset($_POST['aranan'])){ echo $_POST['aranan']; }?>
+          
                         <small>
+                        <?php echo $say." kayıt bulundu" ?>
                               <?php
                                 if(isset($_GET['durum'])){
                                  if ($_GET['durum'] == 'ok') {
@@ -62,8 +78,6 @@ include '../../pdo/connect.php';
                           </thead>
                           <tbody>
                             <?php
-                            $latestpostsor=$db->prepare("SELECT * FROM latestpost ORDER BY latestpost_id DESC");
-                            $latestpostsor->execute();
                             while ($latestpostcek=$latestpostsor->fetch(PDO::FETCH_ASSOC)) {
                             ?>            
                               <tr class="even pointer">

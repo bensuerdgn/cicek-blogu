@@ -1,6 +1,7 @@
 <?php 
 include 'header.php';
 include '../../pdo/connect.php';
+
 ?>
  
         <!-- page content -->
@@ -10,12 +11,12 @@ include '../../pdo/connect.php';
             </div>
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Anahtar Kelime Gir...">
-                    <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Ara!</button>
-                    </span>
-                  </div>
+                    <div class="input-group">
+                      <input type="text" class="form-control"  placeholder="Anahtar Kelime Giriniz...">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Ara!</button>
+                      </span>
+                    </div>
                 </div>
             </div>
             <div class="x_content">
@@ -60,8 +61,9 @@ include '../../pdo/connect.php';
                           </thead>
                           <tbody>
                             <?php
-                            $ciceksor=$db->prepare("SELECT * FROM cicek_galerisi ORDER BY cicekgalerisi_id DESC");
-                            $ciceksor->execute();
+                             $ciceksor=$db->prepare("SELECT * FROM cicek_galerisi ORDER BY cicekgalerisi_id DESC");
+                             $ciceksor->execute();
+                            
                             while ($cicekcek=$ciceksor->fetch(PDO::FETCH_ASSOC)) {
                             ?>            
                               <tr class="even pointer">
