@@ -1,11 +1,21 @@
 
 <?php
 include "../pdo/connect.php";
-$ayarlar=$db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
+$ayarlar = $db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
 $nav = $db->query("SELECT * FROM nav");
-$section = $db->query("SELECT * FROM section");
 $recentpost = $db->query("SELECT * FROM recentpost");
 $footertags = $db->query("SELECT * FROM footertags");
+
+if (isset($_POST['arama'])) {
+    $aranan=$_POST['aranan'];
+    $sectionsor=$db->prepare("SELECT * FROM section WHERE section_baslik LIKE '%$aranan%' ORDER BY section_id DESC");
+    $sectionsor->execute();
+    $say=$sectionsor->rowCount();
+  }else {
+    $sectionsor=$db->prepare("SELECT * FROM section ORDER BY section_id DESC");
+    $sectionsor->execute();
+    $say=$sectionsor->rowCount();
+  }
 
 ?>
 <!DOCTYPE html>
@@ -31,12 +41,22 @@ $footertags = $db->query("SELECT * FROM footertags");
         <div class="header">
             <div class="header-background">
                 <div class="blog-text">
+                   
+                    <div class="blog-header">
+                        <div class="blog-choice">
+                            <a href="index.php">Anasayfa</a>
+                            <a href="cicekgalerisi.php">Çiçek Galerisi</a>
+                        </div>
+                        <div class="search-container">
+                            <form action="" method="post">
+                                <input name="aranan" type="text" placeholder="ara.." >
+                                <button name="arama" type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+
                     <div class="blog-title">
                         <h1><?php echo $ayarlar['site_logo'] ?></h1>
-                    </div>
-                    <div class="blog-choice">
-                        <a href="index.php">Anasayfa</a>
-                        <a href="cicekgalerisi.php">Çiçek Galerisi</a>
                     </div>
 
                 </div>
@@ -46,13 +66,13 @@ $footertags = $db->query("SELECT * FROM footertags");
             <div class="nav">
                 <div class="nav-tag">
                     <?php
-                        if ($nav->rowCount()) {
-                           foreach ($nav as $row) {
+                    if ($nav->rowCount()) {
+                        foreach ($nav as $row) {
                     ?>
                         <a href="index.php?sayfa=tag_detay&tag=<?php echo $row["nav_tag"] ?>"><?php echo $row["nav_tag"]; ?></a>
                     <?php
-                        }
-                            }
+                    }
+                    }
                     ?>
                 </div>
             </div>
@@ -60,33 +80,33 @@ $footertags = $db->query("SELECT * FROM footertags");
         <section>
             <div class="section">
                 <div class="content">
-                        <?php 
-                            if ($section->rowCount()) {
-                                foreach($section as $row){
+                        <?php
+                        while ($sectioncek=$sectionsor->fetch(PDO::FETCH_ASSOC)) {
+
                         ?>
                     <div class="content-box">
-                        
+
                         <div class="img">
-                            <img src="<?php echo $row["section_fotograf"]; ?>">
+                            <img src="<?php echo $sectioncek["section_fotograf"]; ?>">
                         </div>
                         <div class="box-info">
                             <div class="box-title">
                                 <a href="index.php?sayfa=section_detay&section_id=<?php echo $row['section_id']; ?>">
-                                    <h2><?php echo $row["section_baslik"]; ?></h2>
+                                    <h2><?php echo $sectioncek["section_baslik"]; ?></h2>
                                 </a>
                             </div>
                             <div class="box-text">
-                                <p><?php echo $row["section_aciklama"]; ?></p>
+                                <p><?php echo $sectioncek["section_aciklama"]; ?></p>
                             </div>
                         </div>
-                                
+
                     </div>
-                    <?php 
-                        }
-                            }
+                    <?php
+                    }
+                    
                     ?>
                 </div>
-            </div>  
+            </div>
             <div class="page-number">
                 <div class="number">
                     <a href="#">1</a>
@@ -99,7 +119,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                 <div class="footer-title">
                     <h1>
                     <?php
-                     echo $ayarlar["site_logo"]; 
+                    echo $ayarlar["site_logo"];
                     ?>
                      </h1>
                     <p><?php echo $ayarlar["site_aciklama"]; ?></p>
@@ -107,8 +127,8 @@ $footertags = $db->query("SELECT * FROM footertags");
                 <div class="footer-recent-posts">
                     <h2>Öne Çıkanlar</h2>
                     <?php
-                        if ($recentpost->rowCount()) {
-                            foreach($recentpost as $row){
+                    if ($recentpost->rowCount()) {
+                        foreach ($recentpost as $row) {
                     ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
@@ -119,25 +139,25 @@ $footertags = $db->query("SELECT * FROM footertags");
                             <p><?php echo $row["recent_aciklama"]; ?></p>
                         </div>
                     </div>
-                    <?php 
-                        }
-                            }
+                    <?php
+                    }
+                    }
                     ?>
 
                 </div>
                 <div class="footer-tags">
                     <h2>Başlıklar</h2>
-                   
+
                     <div class="tag-cloud">
-                    <?php 
-                        if ($footertags->rowCount()) {
-                            foreach($footertags as $row){
-                    ?>
+                    <?php
+                    if ($footertags->rowCount()) {
+                        foreach ($footertags as $row) {
+                            ?>
                         <a href="index.php?sayfa=tag_detay&tag=<?php echo $row["footer_tag"] ?>"><?php echo $row["footer_tag"] ?></a>
-                    <?php 
+                        <?php
                         }
-                            }
-                    ?>
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
