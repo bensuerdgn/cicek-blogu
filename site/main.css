@@ -61,13 +61,12 @@ p {
 .search-container button:hover {
   background: #ccc;
 }
-
 .search-container button {
   float: right;
   padding: 6px 10px;
   margin-top: 8px;
   margin-right: 16px;
-  background: #ddd;
+  background:var(--img-color);
   font-size: 17px;
   border: none;
   cursor: pointer;

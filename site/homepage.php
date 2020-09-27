@@ -91,12 +91,12 @@ if (isset($_POST['arama'])) {
                         </div>
                         <div class="box-info">
                             <div class="box-title">
-                                <a href="index.php?sayfa=section_detay&section_id=<?php echo $row['section_id']; ?>">
+                                <a href="index.php?sayfa=section_detay&section_id=<?php echo $sectioncek['section_id']; ?>">
                                     <h2><?php echo $sectioncek["section_baslik"]; ?></h2>
                                 </a>
                             </div>
                             <div class="box-text">
-                                <p><?php echo $sectioncek["section_aciklama"]; ?></p>
+                                <p><?php echo substr($sectioncek["section_aciklama"],0,10); ?></p>
                             </div>
                         </div>
 

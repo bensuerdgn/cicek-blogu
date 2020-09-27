@@ -6,24 +6,12 @@ if (isset($_GET['section_id'])) {
         $_GET['section_id'],
     ]);
     $section=$section_query->fetch(PDO::FETCH_ASSOC);
+}else {
+    echo "get yok";
 }
 
 
-if (isset($_GET['recentpost_id'])) {
-    $recentpost_query = $db->prepare("SELECT * FROM recentpost WHERE recentpost_id=?");
-    $recentpost_query->execute([
-    $_GET['recentpost_id'],
-]);
-$recentpost=$recentpost_query->fetch(PDO::FETCH_ASSOC);
-}
 
-if (isset($_GET['latestpost_id'])) {
-    $latestpost_query = $db->prepare("SELECT * FROM latestpost WHERE latestpost_id=?");
-    $latestpost_query->execute([
-    $_GET['latestpost_id'],
-]);
-$latestpost=$latestpost_query->fetch(PDO::FETCH_ASSOC);
-}
 
 $ayarlar=$db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
 $latestpost2 = $db->query("SELECT * FROM latestpost");
