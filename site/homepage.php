@@ -73,7 +73,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                 <div class="content">
                     <?php
 
-                    $sayfada=5;
+                    $sayfada=2;
 
                     $sorgu=$db->prepare("SELECT * FROM section");
                     $sorgu->execute();
@@ -127,27 +127,25 @@ $footertags = $db->query("SELECT * FROM footertags");
                 </div>
             </div>
             <div class="page-number">
+            <div class="number">
             <?php
             $s=0;
             while ($s < $toplam_sayfa) {
                 $s++;
                 if ($s==$sayfa) {
             ?>
-                    <div class="number">
                         <a href="homepage.php?sayfa=<?php echo $s ; ?>"><?php echo $s ; ?></a>
-                    </div>
+                    
                     <?php
                 }else {
                     ?>
-                    <div class="number">
                         <a href="homepage.php?sayfa=<?php echo $s ; ?>"><?php echo $s ; ?></a>
-                    </div>
-
+                    
             <?php
                 }
             }
             ?>
-                
+               </div> 
             </div>
         </section>
         <footer>
