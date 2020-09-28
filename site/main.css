@@ -52,7 +52,7 @@ p {
   margin-bottom: 3%;
   width: 100%;
 }
-.search-container input[type=text] {
+.search-container input[type="text"] {
   padding: 6px;
   margin-top: 8px;
   font-size: 17px;
@@ -66,7 +66,7 @@ p {
   padding: 6px 10px;
   margin-top: 8px;
   margin-right: 16px;
-  background:var(--img-color);
+  background: var(--img-color);
   font-size: 17px;
   border: none;
   cursor: pointer;
@@ -94,10 +94,14 @@ p {
   background-color: var(--img-color);
   border-radius: 40px;
 }
+.section-kayit h3 {
+  color: var(--text-color);
+  margin-left: 5%;
+  margin-top: 2%;
+}
 .section {
   display: flex;
   justify-content: center;
-  margin-top: 5%;
 }
 .content {
   display: flex;

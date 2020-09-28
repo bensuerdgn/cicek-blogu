@@ -5,18 +5,6 @@ $ayarlar = $db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
 $nav = $db->query("SELECT * FROM nav");
 $recentpost = $db->query("SELECT * FROM recentpost");
 $footertags = $db->query("SELECT * FROM footertags");
-
-if (isset($_POST['arama'])) {
-    $aranan=$_POST['aranan'];
-    $sectionsor=$db->prepare("SELECT * FROM section WHERE section_baslik LIKE '%$aranan%' ORDER BY section_id DESC");
-    $sectionsor->execute();
-    $say=$sectionsor->rowCount();
-  }else {
-    $sectionsor=$db->prepare("SELECT * FROM section ORDER BY section_id DESC");
-    $sectionsor->execute();
-    $say=$sectionsor->rowCount();
-  }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,13 +65,44 @@ if (isset($_POST['arama'])) {
                 </div>
             </div>
         </nav>
+        <div class="section-kayit">
+           <h3><?php // echo $aranan." "." kayıt bulundu";?></h3>
+        </div>
         <section>
             <div class="section">
                 <div class="content">
-                        <?php
-                        while ($sectioncek=$sectionsor->fetch(PDO::FETCH_ASSOC)) {
+                    <?php
 
-                        ?>
+                    $sayfada=5;
+
+                    $sorgu=$db->prepare("SELECT * FROM section");
+                    $sorgu->execute();
+                    $toplam_icerik=$sorgu->rowCount();
+                    $toplam_sayfa=ceil($toplam_icerik/$sayfada);
+
+                    $sayfa=isset($_GET['sayfa']) ? (int) $_GET['sayfa'] : 1;
+
+                    if ($sayfa<1) $sayfa=1;
+                    if ($sayfa>$toplam_sayfa) $sayfa=$toplam_sayfa;
+
+                    $limit = ($sayfa - 1) * $sayfada;
+                    
+                    if (isset($_POST['aranan'])) {
+                        $aranan=$_POST['aranan'];                   
+                        if (isset($_POST['arama'])) {
+                            $sectionsor=$db->prepare("SELECT * FROM section WHERE section_baslik LIKE '%$aranan%' ORDER BY section_id DESC LIMIT $limit, $sayfada");
+                            $sectionsor->execute();
+                            $say=$sectionsor->rowCount();}
+                    }else {
+                        $sectionsor=$db->prepare("SELECT * FROM section ORDER BY section_id DESC LIMIT $limit, $sayfada");
+                        $sectionsor->execute();
+                        $say=$sectionsor->rowCount();
+                    }
+                    
+                   
+                    while ($sectioncek=$sectionsor->fetch(PDO::FETCH_ASSOC)) {
+
+                    ?>
                     <div class="content-box">
 
                         <div class="img">
@@ -108,10 +127,27 @@ if (isset($_POST['arama'])) {
                 </div>
             </div>
             <div class="page-number">
-                <div class="number">
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                </div>
+            <?php
+            $s=0;
+            while ($s < $toplam_sayfa) {
+                $s++;
+                if ($s==$sayfa) {
+            ?>
+                    <div class="number">
+                        <a href="homepage.php?sayfa=<?php echo $s ; ?>"><?php echo $s ; ?></a>
+                    </div>
+                    <?php
+                }else {
+                    ?>
+                    <div class="number">
+                        <a href="homepage.php?sayfa=<?php echo $s ; ?>"><?php echo $s ; ?></a>
+                    </div>
+
+            <?php
+                }
+            }
+            ?>
+                
             </div>
         </section>
         <footer>
