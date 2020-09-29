@@ -168,4 +168,8 @@
       grid-template-columns: repeat(1, 1fr);
     }
   }
-  
+  @media only screen and (max-width: 600px) {
+    .blog-text a{
+      font-size: 15px;
+    }
+  }

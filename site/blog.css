@@ -166,3 +166,18 @@ p {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+@media only screen and (max-width: 600px) {
+
+  .blog-text a{
+    font-size: 15px;
+  }
+  .content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .content-box, .blog-latest-posts{
+    width: 80%;
+    margin-bottom:5% ;
+  }
+}

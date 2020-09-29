@@ -73,7 +73,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                 <div class="content">
                     <?php
 
-                    $sayfada=2;
+                    $sayfada=9;
 
                     $sorgu=$db->prepare("SELECT * FROM section");
                     $sorgu->execute();
