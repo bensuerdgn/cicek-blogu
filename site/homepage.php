@@ -115,7 +115,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                                 </a>
                             </div>
                             <div class="box-text">
-                                <p><?php echo substr($sectioncek["section_aciklama"],0,10); ?></p>
+                                <p><?php echo substr($sectioncek["section_aciklama"],0,100); ?>...</p>
                             </div>
                         </div>
 

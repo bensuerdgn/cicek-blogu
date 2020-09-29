@@ -57,6 +57,7 @@ p {
   margin-top: 8px;
   font-size: 17px;
   border: none;
+  border-radius: 40px 0 0 40px;
 }
 .search-container button:hover {
   background: #ccc;
@@ -70,6 +71,7 @@ p {
   font-size: 17px;
   border: none;
   cursor: pointer;
+  border-radius: 0 40px 40px 0;
 }
 .blog-text h1,
 .blog-text a {
