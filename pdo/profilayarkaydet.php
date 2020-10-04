@@ -2,13 +2,16 @@
 ob_start();
 include 'connect.php';
 if (isset($_POST['profilayarkaydet'])) {
+    $kullanici_sifre = md5($_POST['kullanici_sifre']);
+    $kullanici_id=$_POST['kullanici_id'];
+
     $profilayarkaydet = $db->prepare("UPDATE admin_panel set
-        kullanici_ad=:ad,
+        kullanici_adsoyad=:adsoyad,
         kullanici_sifre=:sifre
-        WHERE kullanici_id=1");
+        WHERE kullanici_id=$kullanici_id");
     $update = $profilayarkaydet->execute([
-        'ad' => $_POST['kullanici_ad'],
-        'sifre' => $_POST['kullanici_sifre'],
+        'adsoyad' => $_POST['kullanici_adsoyad'],
+        'sifre' => $kullanici_sifre,
     ]);
     if ($update) {
         header("Location:../admin_panel/production/profil_ayar.php?durum=ok");

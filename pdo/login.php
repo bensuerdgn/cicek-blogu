@@ -14,7 +14,6 @@ if (isset($_POST['login'])) {
             'sifre' => $kullanici_sifre,
         ]);
         $say = $sorgu->rowCount();
-        echo $say;
         if ($say > 0) {
             $_SESSION['kullanici_ad'] = $kullanici_ad;
             header('Location:../admin_panel/production/index.php');

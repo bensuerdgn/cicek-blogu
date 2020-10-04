@@ -1,3 +1,6 @@
+<?php 
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>Yönetim Paneli </title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -48,13 +51,12 @@
                 <p class="change_link">
                   <?php
                   if (isset($_GET['durum'])) {
-                  
                     if ($_GET['durum']=='no') {
                         echo "Giriş yapılamadı";
                     }elseif ($_GET['durum']=='exit') {
                         echo 'Çıkış Yapıldı';
                     }
-                }
+                  }
                   ?>
                 </p>
 

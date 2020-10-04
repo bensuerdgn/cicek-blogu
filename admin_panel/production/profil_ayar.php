@@ -3,11 +3,6 @@
 include '../../pdo/connect.php';
 include 'header.php';
 
-$sorgu=$db->prepare("SELECT * FROM admin_panel WHERE kullanici_ad=:ad");
-$sorgu->execute([
-    'ad'=>$_SESSION['kullanici_ad']
-]);
-$profil_ayar=$sorgu->fetch(PDO::FETCH_ASSOC);
 ?>
 
         <!-- page content -->
@@ -26,7 +21,7 @@ $profil_ayar=$sorgu->fetch(PDO::FETCH_ASSOC);
                                     <button class="btn btn-default" type="button">Ara</button>
                                 </span>
                             </div>
-                        </div>
+                        </div> 
                     </div>
 
                     <div class="row">
@@ -67,34 +62,59 @@ $profil_ayar=$sorgu->fetch(PDO::FETCH_ASSOC);
                                      <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
-                                    <form action="../../pdo/profilayarkaydet.php" method="POST" class="form-horizontal form-label-left input_mask">
+                                    <form action="../../pdo/fotografkaydet.php" method="POST" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left input_mask">
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Profil Fotoğrafınız <span class="required"></span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">                                                <?php
                                                     if (strlen($profil_ayar['kullanici_fotograf'])>0) {?>
-                                                        <img width="100px" src="" alt="profil fotografı">
+                                                        <img width="100px" src="../../img/<?php echo $profil_ayar['kullanici_fotograf'] ?>" alt="profil fotografı">
                                                         <?php
                                                     } else {?>
                                                         <img width="100px" src="https://fastly.4sqi.net/img/user/130x130/86680468_tpemgjOn_bpbEG15uJOrLiylGK6pa-8bBWbzC6zxNPnIdAEnm2PjqnnxswQP-xA68Q33cVj43" alt="profil fotografı">
                                                         <?php
                                                     }
                                                     
-                                                ?>
+                                                    ?>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kullanıcı Adınız Soyadınız  <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="file" name="kullanici_fotograf" required="required" class="form-control col-md-7 col-xs-12">
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="eski_yol" value="<?php echo $profil_ayar['kullanici_fotograf'] ?>">
+                                        <input type="hidden" name="kullanici_id" value="<?php echo $profil_ayar['kullanici_id'] ?>>
+                                        <div class="form-group" >
+                                            <div align="right" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                                <button type="submit" name="fotografkaydet" class="btn btn-primary">Güncelle</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <hr>
+                                    <form action="../../pdo/profilayarkaydet.php" method="post" class="form-horizontal form-label-left input_mask">
+                                        <input type="hidden" name="kullanici_id" value="<?php echo $profil_ayar['kullanici_id'] ?>">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kullanıcı Ad Soyad  <span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input type="text" name="kullanici_adsoyad" required="required" value="<?php echo $profil_ayar['kullanici_adsoyad']; ?>" class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kullanıcı Adınız  <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="kullanici_ad" required="required" value="<?php echo $profil_ayar['kullanici_ad']; ?>" class="form-control col-md-7 col-xs-12">
+                                            <input type="text" name="kullanici_ad" required="required" disabled value="<?php echo $profil_ayar['kullanici_ad']; ?>" class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kullanıcı Şifreniz <span class="required">*</span>
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" name="kullanici_sifre" required="required" value="<?php echo $profil_ayar['kullanici_sifre']; ?>" class="form-control col-md-7 col-xs-12">
+                                            <input type="password" name="kullanici_sifre" required="required" value="<?php echo $profil_ayar['kullanici_sifre']; ?>" class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </div>
                                         <div class="form-group" >
