@@ -68,7 +68,7 @@ include 'header.php';
                                             </label>
                                             <div class="col-md-6 col-sm-6 col-xs-12">                                                <?php
                                                     if (strlen($profil_ayar['kullanici_fotograf'])>0) {?>
-                                                        <img width="100px" src="../../img/<?php echo $profil_ayar['kullanici_fotograf'] ?>" alt="profil fotografı">
+                                                        <img width="100px" src="../<?php echo $profil_ayar['kullanici_fotograf'] ?>" alt="profil fotografı">
                                                         <?php
                                                     } else {?>
                                                         <img width="100px" src="https://fastly.4sqi.net/img/user/130x130/86680468_tpemgjOn_bpbEG15uJOrLiylGK6pa-8bBWbzC6zxNPnIdAEnm2PjqnnxswQP-xA68Q33cVj43" alt="profil fotografı">
@@ -86,7 +86,7 @@ include 'header.php';
                                             </div>
                                         </div>
                                         <input type="hidden" name="eski_yol" value="<?php echo $profil_ayar['kullanici_fotograf'] ?>">
-                                        <input type="hidden" name="kullanici_id" value="<?php echo $profil_ayar['kullanici_id'] ?>>
+                                        <input type="hidden" name="kullanici_id" value="<?php echo $profil_ayar['kullanici_id'] ?>">
                                         <div class="form-group" >
                                             <div align="right" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                                 <button type="submit" name="fotografkaydet" class="btn btn-primary">Güncelle</button>
