@@ -10,9 +10,11 @@ if (isset($_POST['fotografkaydet'])) {
     $imgyol = substr($uploads_dir, 0 ) . "/" . $sayi . $name;
     
     @move_uploaded_file($tmp_name, "$uploads_dir/$sayi$name");
+    $kullanici_id=$_POST['kullanici_id'];
+
     $duzenle = $db->prepare("UPDATE admin_panel set
         kullanici_fotograf=:fotograf
-        WHERE kullanici_id=1");
+        WHERE kullanici_id=$kullanici_id");
     $update = $duzenle->execute([
         'fotograf' => $imgyol,
     ]);
