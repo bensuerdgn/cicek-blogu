@@ -6,6 +6,10 @@ $sorgu=$db->prepare("SELECT * FROM admin_panel WHERE kullanici_ad=:ad");
 $sorgu->execute([
     'ad'=>$_SESSION['kullanici_ad'],
 ]);
+$say=$sorgu->rowCount();
+if ($say==0) {
+  header('Location:login.php?durum=izinyok');
+}
 $profil_ayar=$sorgu->fetch(PDO::FETCH_ASSOC);
 ?>
  

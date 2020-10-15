@@ -104,7 +104,6 @@ $footertags = $db->query("SELECT * FROM footertags");
 
                     ?>
                     <div class="content-box">
-
                         <div class="img">
                             <img src="<?php echo $sectioncek["section_fotograf"]; ?>">
                         </div>
@@ -118,7 +117,6 @@ $footertags = $db->query("SELECT * FROM footertags");
                                 <p><?php echo substr($sectioncek["section_aciklama"],0,100); ?>...</p>
                             </div>
                         </div>
-
                     </div>
                     <?php
                     }
