@@ -1,3 +1,19 @@
 RewriteEngine on
 
 ErrorDocument 404 http://localhost/cicek-blogu/site/notfound.php
+
+RewriteRule ^index$ index.php [NC,L]
+
+RewriteRule ^homepage$ homepage.php [NC,L]
+
+RewriteRule ^cicekgalerisi$ cicekgalerisi.php [NC,L]
+
+RewriteRule ^latestpost$ latestpost_detay.php [NC,L]
+
+RewriteRule ^recentpost$ recentpost_detay.php [NC,L]
+
+RewriteRule ^section$ section_detay.php [NC,L]
+
+RewriteRule ^tag$ tag_detay.php [NC,L]
+
+RewriteRule ^notfound$ notfound.php [NC,L]

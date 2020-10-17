@@ -32,8 +32,8 @@ $footertags = $db->query("SELECT * FROM footertags");
                    
                     <div class="blog-header">
                         <div class="blog-choice">
-                            <a href="index.php">Anasayfa</a>
-                            <a href="cicekgalerisi.php">Çiçek Galerisi</a>
+                            <a href="index">Anasayfa</a>
+                            <a href="cicekgalerisi">Çiçek Galerisi</a>
                         </div>
                         <div class="search-container">
                             <form action="" method="post">
@@ -57,7 +57,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     if ($nav->rowCount()) {
                         foreach ($nav as $row) {
                     ?>
-                        <a href="index.php?sayfa=tag_detay&tag=<?php echo $row["nav_tag"] ?>"><?php echo $row["nav_tag"]; ?></a>
+                        <a href="index?sayfa=tag_detay&tag=<?php echo $row["nav_tag"] ?>"><?php echo $row["nav_tag"]; ?></a>
                     <?php
                     }
                     }
@@ -73,7 +73,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                 <div class="content">
                     <?php
 
-                    $sayfada=5;
+                    $sayfada=10;
 
                     $sorgu=$db->prepare("SELECT * FROM section");
                     $sorgu->execute();
@@ -110,7 +110,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                         </div>
                         <div class="box-info">
                             <div class="box-title">
-                                <a href="index.php?sayfa=section_detay&section_id=<?php echo $sectioncek['section_id']; ?>">
+                                <a href="index?sayfa=section_detay&section_id=<?php echo $sectioncek['section_id']; ?>">
                                     <h2><?php echo $sectioncek["section_baslik"]; ?></h2>
                                 </a>
                             </div>
@@ -133,12 +133,12 @@ $footertags = $db->query("SELECT * FROM footertags");
                 $s++;
                 if ($s==$sayfa) {
             ?>
-                        <a href="homepage.php?sayfa=<?php echo $s ; ?>"><?php echo $s ; ?></a>
+                        <a href="homepage?sayfa=<?php echo $s ; ?>"><?php echo $s ; ?></a>
                     
                     <?php
                 }else {
                     ?>
-                        <a href="homepage.php?sayfa=<?php echo $s ; ?>"><?php echo $s ; ?></a>
+                        <a href="homepage?sayfa=<?php echo $s ; ?>"><?php echo $s ; ?></a>
                     
             <?php
                 }
@@ -165,7 +165,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
-                            <a href="index.php?sayfa=recentpost_detay&recentpost_id=<?php echo $row['recentpost_id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
+                            <a href="index?sayfa=recentpost_detay&recentpost_id=<?php echo $row['recentpost_id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
                         </div>
                         <div class="recent-post-title">
                             <p><?php echo $row["recent_baslik"]; ?></p>
@@ -186,7 +186,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     if ($footertags->rowCount()) {
                         foreach ($footertags as $row) {
                             ?>
-                        <a href="index.php?sayfa=tag_detay&tag=<?php echo $row["footer_tag"] ?>"><?php echo $row["footer_tag"] ?></a>
+                        <a href="index?sayfa=tag_detay&tag=<?php echo $row["footer_tag"] ?>"><?php echo $row["footer_tag"] ?></a>
                         <?php
                         }
                         }
