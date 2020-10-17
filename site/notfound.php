@@ -65,87 +65,13 @@ $footertags = $db->query("SELECT * FROM footertags");
                 </div>
             </div>
         </nav>
-        <div class="section-kayit">
-           <h3><?php // echo $aranan." "." kayıt bulundu";?></h3>
-        </div>
         <section>
             <div class="section">
-                <div class="content">
-                    <?php
-
-                    $sayfada=5;
-
-                    $sorgu=$db->prepare("SELECT * FROM section");
-                    $sorgu->execute();
-                    $toplam_icerik=$sorgu->rowCount();
-                    $toplam_sayfa=ceil($toplam_icerik/$sayfada);
-
-                    $sayfa=isset($_GET['sayfa']) ? (int) $_GET['sayfa'] : 1;
-
-                    if ($sayfa<1) $sayfa=1;
-                    if ($sayfa>$toplam_sayfa) $sayfa=$toplam_sayfa;
-
-                    $limit = ($sayfa - 1) * $sayfada;
-                    
-                    if (isset($_POST['aranan'])) {
-                        $aranan=$_POST['aranan'];                   
-                        if (isset($_POST['arama'])) {
-                            $sectionsor=$db->prepare("SELECT * FROM section WHERE section_baslik LIKE '%$aranan%' ORDER BY section_id DESC LIMIT $limit, $sayfada");
-                            $sectionsor->execute();
-                            $say=$sectionsor->rowCount();
-                        }
-                    }else {
-                        $sectionsor=$db->prepare("SELECT * FROM section ORDER BY section_id DESC LIMIT $limit, $sayfada");
-                        $sectionsor->execute();
-                        $say=$sectionsor->rowCount();
-                    }
-                    
-                   
-                    while ($sectioncek=$sectionsor->fetch(PDO::FETCH_ASSOC)) {
-
-                    ?>
-                    <div class="content-box">
-                        <div class="img">
-                            <img src="<?php echo $sectioncek["section_fotograf"]; ?>">
-                        </div>
-                        <div class="box-info">
-                            <div class="box-title">
-                                <a href="index.php?sayfa=section_detay&section_id=<?php echo $sectioncek['section_id']; ?>">
-                                    <h2><?php echo $sectioncek["section_baslik"]; ?></h2>
-                                </a>
-                            </div>
-                            <div class="box-text">
-                                <p><?php echo substr($sectioncek["section_aciklama"],0,100); ?>...</p>
-                            </div>
-                        </div>
-                    </div>
-                    <?php
-                    }
-                    
-                    ?>
+                <div style="display:flex; justify-content:center; margin-bottom:5%; font-size:30px;" class="content">
+                    <p >ARADIĞINIZ SAYFA BULUNAMADI</p>
                 </div>
             </div>
-            <div class="page-number">
-            <div class="number">
-            <?php
-            $s=0;
-            while ($s < $toplam_sayfa) {
-                $s++;
-                if ($s==$sayfa) {
-            ?>
-                        <a href="homepage.php?sayfa=<?php echo $s ; ?>"><?php echo $s ; ?></a>
-                    
-                    <?php
-                }else {
-                    ?>
-                        <a href="homepage.php?sayfa=<?php echo $s ; ?>"><?php echo $s ; ?></a>
-                    
-            <?php
-                }
-            }
-            ?>
-               </div> 
-            </div>
+           
         </section>
         <footer>
             <div class="footer">

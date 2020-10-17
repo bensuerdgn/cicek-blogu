@@ -84,7 +84,7 @@ p {
 }
 .nav-tag {
   width: 70%;
-  margin-top: 5%;
+  margin: 5% 0 5% 0;
   padding: 10px 0 10px 0;
   border: var(--img-color) 2px solid;
   border-radius: 40px;
@@ -172,6 +172,9 @@ p {
   padding: 2%;
   background-color: var(--img-color);
   color: white;
+}
+.footer-recent-posts{
+  margin-right: 15%;
 }
 .footer-title h1,
 .footer-recent-posts h2,
