@@ -35,8 +35,8 @@ $cicekgalerisi = $db->query("SELECT * FROM cicek_galerisi");
                         <h1><?php echo $ayarlar['site_logo'] ?></h1>
                     </div>
                     <div class="blog-choice">
-                        <a href="homepage.php">ANASAYFA</a>
-                        <a href="cicekgalerisi.php">ÇİÇEK GALERİSİ</a>
+                        <a href="homepage">ANASAYFA</a>
+                        <a href="cicekgalerisi">ÇİÇEK GALERİSİ</a>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@ $cicekgalerisi = $db->query("SELECT * FROM cicek_galerisi");
                     ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
-                            <a href="index.php?sayfa=recentpost_detay&recentpost_id=<?php echo $row['recentpost_id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
+                            <a href="index?sayfa=recentpost_detay&recentpost_id=<?php echo $row['recentpost_id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
                         </div>
                         <div class="recent-post-title">
                             <p><?php echo $row["recent_baslik"]; ?></p>
@@ -106,7 +106,7 @@ $cicekgalerisi = $db->query("SELECT * FROM cicek_galerisi");
                         if ($footertags->rowCount()) {
                             foreach($footertags as $row){
                     ?>
-                        <a href="index.php?sayfa=latestpost_detay&kategori=<?php echo $row['footer_tag']; ?>"><?php echo $row["footer_tag"] ?></a>
+                        <a href="index?sayfa=latestpost_detay&kategori=<?php echo $row['footer_tag']; ?>"><?php echo $row["footer_tag"] ?></a>
                     <?php 
                         }
                             }

@@ -56,8 +56,8 @@ $footertags = $db->query("SELECT * FROM footertags");
                         <h1><?php echo $ayarlar['site_logo'] ?></h1>
                     </div>
                     <div class="blog-choice">
-                        <a href="homepage.php">ANASAYFA</a>
-                        <a href="cicekgalerisi.php">ÇİÇEK GALERİSİ</a>
+                        <a href="homepage">ANASAYFA</a>
+                        <a href="cicekgalerisi">ÇİÇEK GALERİSİ</a>
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     <div class="img"><img src="<?php echo $latestpost["latest_fotograf"]; ?>"
                             alt="turuncu çiçek"></div>
                     <div class="box-info">
-                        <div class="box-title"><a href="index.php?sayfa=latestpost_detay&latestpost_id=<?php echo $row['latestpost_id']; ?>">
+                        <div class="box-title"><a href="index?sayfa=latestpost_detay&latestpost_id=<?php echo $row['latestpost_id']; ?>">
                                 <h2><?php echo $latestpost["latest_baslik"]; ?></h2>
                             </a></div>
                         <div class="box-text">
@@ -84,7 +84,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     ?>
                     <div class="latest-posts">
                         <div class="latest-posts-img">
-                            <a href=" index.php?sayfa=latestpost_detay&latestpost_id=<?php echo $row['latestpost_id']; ?>"> <img src="<?php echo $row["latest_fotograf"]; ?>"></a>
+                            <a href=" index?sayfa=latestpost_detay&latestpost_id=<?php echo $row['latestpost_id']; ?>"> <img src="<?php echo $row["latest_fotograf"]; ?>"></a>
                         </div>
                         <div class="latest-post-title">
                             <p><?php echo $row["latest_baslik"]; ?></p>
@@ -117,7 +117,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
-                            <a href="index.php?sayfa=recentpost_detay&recentpost_id=<?php echo $row['recentpost_id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
+                            <a href="index?sayfa=recentpost_detay&recentpost_id=<?php echo $row['recentpost_id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
                         </div>
                         <div class="recent-post-title">
                             <p><?php echo $row["recent_baslik"]; ?></p>
@@ -138,7 +138,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                         if ($footertags->rowCount()) {
                             foreach($footertags as $row){
                     ?>
-                        <a href="index.php?sayfa=tag_detay&tag=<?php echo $row["footer_tag"] ?>"><?php echo $row["footer_tag"] ?></a>
+                        <a href="index?sayfa=tag_detay&tag=<?php echo $row["footer_tag"] ?>"><?php echo $row["footer_tag"] ?></a>
                     <?php 
                         }
                             }
