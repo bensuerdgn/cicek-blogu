@@ -29,6 +29,7 @@ switch ($_GET['sayfa']) {
         break;
     case 'tag_detay';
         require_once 'tag_detay.php';
+        break;
     case 'notfound';
         require_once 'notfound.php';
         break;

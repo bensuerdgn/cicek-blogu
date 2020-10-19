@@ -26,7 +26,6 @@ if (isset($_GET['tag'])) {
     <meta name="keywords" content="<?php echo $ayarlar['ayar_keywords'] ?>">
     <link rel="stylesheet" href="blog.css">
     <script src="https://kit.fontawesome.com/8bbf8c5eb9.js" crossorigin="anonymous"></script>
-
     <title><?php echo $ayarlar['ayar_title'] ?></title>
 </head>
         
@@ -49,7 +48,7 @@ if (isset($_GET['tag'])) {
             <div class="content">
                 <div class="content-box">
                     <div class="img"><img src="<?php echo $section["section_fotograf"]; ?>"
-                            alt="turuncu çiçek"></div>
+                            alt="<?php echo $section["section_baslik"]; ?>"></div>
                     <div class="box-info">
                         <div class="box-title">
                                 <h2><?php echo $section["section_baslik"]; ?></h2>

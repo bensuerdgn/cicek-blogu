@@ -59,7 +59,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     ?>
                         <a href="index?sayfa=tag_detay&tag=<?php echo $row["nav_tag"] ?>"><?php echo $row["nav_tag"]; ?></a>
                     <?php
-                    }
+                        }
                     }
                     ?>
                 </div>
@@ -196,7 +196,6 @@ $footertags = $db->query("SELECT * FROM footertags");
             </div>
         </footer>
     </div>
-    <script src="script.js"></script>
 </body>
 
 </html>
