@@ -1,5 +1,11 @@
+
+<base href="http://localhost/cicek-blogu/site/homepage">
+
+
 <?php
 include "../pdo/connect.php";
+
+
 if (isset($_GET['section_id'])) {
     $section_query = $db->prepare("SELECT * FROM section WHERE section_id=?");
     $section_query->execute([
@@ -56,7 +62,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     <div class="img"><img src="<?php echo $section["section_fotograf"]; ?>"
                             alt="turuncu çiçek"></div>
                     <div class="box-info">
-                        <div class="box-title"><a href="index?sayfa=section_detay&section_id=<?php echo $row['section_id']; ?>">
+                        <div class="box-title">
                                 <h2><?php echo $section["section_baslik"]; ?></h2>
                             </a></div>
                         <div class="box-text">

@@ -12,8 +12,8 @@ RewriteRule ^latestpost$ latestpost_detay.php [NC,L]
 
 RewriteRule ^recentpost$ recentpost_detay.php [NC,L]
 
-RewriteRule ^section$ section_detay.php [NC,L]
+RewriteRule ^section/([0-9a-zA-Z-_]+)/([0-9]+)$ section_detay.php?sef=$1&section_id=$2 [L,QSA]
 
-RewriteRule ^tag$ tag_detay.php [NC,L]
+RewriteRule ^tag/([0-9a-zA-Z-_]+)$ tag_detay.php?tag=$1 [L,QSA]
 
 RewriteRule ^notfound$ notfound.php [NC,L]

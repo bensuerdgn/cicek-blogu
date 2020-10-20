@@ -1,3 +1,5 @@
+<base href="http://localhost/cicek-blogu/site/homepage">
+
 <?php
 include "../pdo/connect.php";
 

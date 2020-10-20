@@ -1,6 +1,7 @@
 
 <?php
 include "../pdo/connect.php";
+include "function.php";
 $ayarlar = $db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
 $nav = $db->query("SELECT * FROM nav");
 $recentpost = $db->query("SELECT * FROM recentpost");
@@ -57,7 +58,8 @@ $footertags = $db->query("SELECT * FROM footertags");
                     if ($nav->rowCount()) {
                         foreach ($nav as $row) {
                     ?>
-                        <a href="index?sayfa=tag_detay&tag=<?php echo $row["nav_tag"] ?>"><?php echo $row["nav_tag"]; ?></a>
+                        <a href="tag/<?=seo($row['nav_tag']);?>"> <?php echo $row['nav_tag'] ?> </a>
+
                     <?php
                         }
                     }
@@ -65,7 +67,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                 </div>
             </div>
         </nav>
-        <div class="section-kayit">
+        <div class="section-kayit" >
            <h3><?php // echo $aranan." "." kayıt bulundu";?></h3>
         </div>
         <section>
@@ -110,9 +112,10 @@ $footertags = $db->query("SELECT * FROM footertags");
                         </div>
                         <div class="box-info">
                             <div class="box-title">
-                                <a href="index?sayfa=section_detay&section_id=<?php echo $sectioncek['section_id']; ?>">
+                                <a href="section/<?=seo($sectioncek['section_baslik']).'/'.$sectioncek['section_id'];?>">
                                     <h2><?php echo $sectioncek["section_baslik"]; ?></h2>
-                                </a>
+                                </a>                        
+
                             </div>
                             <div class="box-text">
                                 <p><?php echo substr($sectioncek["section_aciklama"],0,100); ?>...</p>
