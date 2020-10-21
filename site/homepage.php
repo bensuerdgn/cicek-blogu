@@ -1,10 +1,18 @@
 <?php
 include "../pdo/connect.php";
 include "function.php";
-$ayarlar = $db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
-$nav = $db->query("SELECT * FROM nav");
-$recentpost = $db->query("SELECT * FROM recentpost");
-$footertags = $db->query("SELECT * FROM footertags");
+$ayarlar_query=$db->prepare("SELECT * FROM ayarlar");
+$ayarlar_query->execute();
+$ayarlar=$ayarlar_query->fetch(PDO::FETCH_ASSOC);
+
+$nav = $db->prepare("SELECT * FROM nav");
+$nav->execute();
+
+$recentpost = $db->prepare("SELECT * FROM recentpost");
+$recentpost->execute();
+
+$footertags = $db->prepare("SELECT * FROM footertags");
+$footertags->execute();
 ?>
 <!DOCTYPE html>
 <html lang="en">

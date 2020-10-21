@@ -1,6 +1,3 @@
-
-
-
 <?php
 include "../pdo/connect.php";
 include "function.php";
@@ -14,13 +11,15 @@ if (isset($_GET['section_id'])) {
     echo "get yok";
 }
 
-
-
-
-$ayarlar=$db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
-$latestpost2 = $db->query("SELECT * FROM latestpost");
-$recentpost2 = $db->query("SELECT * FROM recentpost");
-$footertags = $db->query("SELECT * FROM footertags");
+$ayarlar_query=$db->prepare("SELECT * FROM ayarlar");
+$ayarlar_query->execute();
+$ayarlar=$ayarlar_query->fetch(PDO::FETCH_ASSOC);
+$latestpost2 = $db->prepare("SELECT * FROM latestpost");
+$latestpost2->execute();
+$recentpost2 = $db->prepare("SELECT * FROM recentpost");
+$recentpost2->execute();
+$footertags = $db->prepare("SELECT * FROM footertags");
+$footertags->execute();
 
 ?>
 

@@ -3,10 +3,15 @@
 <?php
 include "../pdo/connect.php";
 include "function.php";
-$ayarlar=$db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
-$latestpost = $db->query("SELECT * FROM latestpost");
-$recentpost = $db->query("SELECT * FROM recentpost");
-$footertags = $db->query("SELECT * FROM footertags");
+$ayarlar_query=$db->prepare("SELECT * FROM ayarlar");
+$ayarlar_query->execute();
+$ayarlar=$ayarlar_query->fetch(PDO::FETCH_ASSOC);
+$latestpost = $db->prepare("SELECT * FROM latestpost");
+$latestpost->execute();
+$recentpost = $db->prepare("SELECT * FROM recentpost");
+$recentpost->execute();
+$footertags = $db->prepare("SELECT * FROM footertags");
+$footertags->execute();
 
 if (isset($_GET['tag'])) {
     $section_query = $db->prepare("SELECT * FROM section WHERE section_baslik=?");
