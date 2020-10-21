@@ -2,7 +2,7 @@
 
 <?php
 include "../pdo/connect.php";
-
+include "function.php";
 $ayarlar=$db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
 $latestpost = $db->query("SELECT * FROM latestpost");
 $recentpost = $db->query("SELECT * FROM recentpost");
@@ -68,7 +68,7 @@ if (isset($_GET['tag'])) {
                     ?>
                     <div class="latest-posts">
                         <div class="latest-posts-img">
-                            <a href=" index?sayfa=latestpost_detay&latestpost_id=<?php echo $row['latestpost_id']; ?>"> <img src="<?php echo $row["latest_fotograf"]; ?>"></a>
+                            <a href="latestpost/<?=seo($row['latest_baslik']).'/'.$row['latestpost_id'];?>"> <img src="<?php echo $row["latest_fotograf"]; ?>"></a>
                         </div>
                         <div class="latest-post-title">
                             <p><?php echo $row["latest_baslik"]; ?></p>
@@ -101,7 +101,7 @@ if (isset($_GET['tag'])) {
                     ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
-                            <a href="index?sayfa=recentpost_detay&recentpost_id=<?php echo $row['recentpost_id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
+                            <a href="recentpost/<?=seo($row['recent_baslik']).'/'.$row['recentpost_id'];?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
                         </div>
                         <div class="recent-post-title">
                             <p><?php echo $row["recent_baslik"]; ?></p>
@@ -122,7 +122,7 @@ if (isset($_GET['tag'])) {
                         if ($footertags->rowCount()) {
                             foreach($footertags as $row){
                     ?>
-                        <a href="index?sayfa=tag_detay&tag=<?php echo $row["footer_tag"] ?>"><?php echo $row["footer_tag"] ?></a>
+                        <a href="tag/<?=seo($row['footer_tag']);?>"><?php echo $row["footer_tag"] ?></a>
                     <?php 
                         }
                             }

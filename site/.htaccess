@@ -8,9 +8,9 @@ RewriteRule ^homepage$ homepage.php [NC,L]
 
 RewriteRule ^cicekgalerisi$ cicekgalerisi.php [NC,L]
 
-RewriteRule ^latestpost$ latestpost_detay.php [NC,L]
+RewriteRule ^latestpost/([0-9a-zA-Z-_]+)/([0-9]+)$ latestpost_detay.php?sef=$1&latestpost_id=$2 [L,QSA]
 
-RewriteRule ^recentpost$ recentpost_detay.php [NC,L]
+RewriteRule ^recentpost/([0-9a-zA-Z-_]+)/([0-9]+)$ recentpost_detay.php?sef=$1&recentpost_id=$2 [L,QSA]
 
 RewriteRule ^section/([0-9a-zA-Z-_]+)/([0-9]+)$ section_detay.php?sef=$1&section_id=$2 [L,QSA]
 

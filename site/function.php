@@ -2,6 +2,13 @@
 <base href="http://localhost/cicek-blogu/site/homepage">
 
 <?php
+ob_start();
+
+include "../pdo/connect.php";
+$_GET = array_map(function ($get) {
+    return htmlspecialchars(trim($get));
+}, $_GET);
+
 function seo($s) {
     $tr = array('ş','Ş','ı','I','İ','ğ','Ğ','ü','Ü','ö','Ö','Ç','ç','(',')','/',':',',');
     $eng = array('s','s','i','i','i','g','g','u','u','o','o','c','c','','','-','-','');

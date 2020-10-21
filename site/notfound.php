@@ -1,6 +1,7 @@
 
 <?php
 include "../pdo/connect.php";
+include "function.php";
 $ayarlar = $db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
 $nav = $db->query("SELECT * FROM nav");
 $recentpost = $db->query("SELECT * FROM recentpost");
@@ -57,7 +58,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     if ($nav->rowCount()) {
                         foreach ($nav as $row) {
                     ?>
-                        <a href="index?sayfa=tag_detay&tag=<?php echo $row["nav_tag"] ?>"><?php echo $row["nav_tag"]; ?></a>
+                        <a href="tag/<?=seo($row['nav_tag']);?>"><?php echo $row["nav_tag"]; ?></a>
                     <?php
                         }
                     }
@@ -91,7 +92,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
-                            <a href="index?sayfa=recentpost_detay&recentpost_id=<?php echo $row['recentpost_id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
+                            <a href="recentpost/<?=seo($row['recent_baslik']).'/'.$row['recentpost_id'];?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
                         </div>
                         <div class="recent-post-title">
                             <p><?php echo $row["recent_baslik"]; ?></p>
@@ -112,7 +113,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     if ($footertags->rowCount()) {
                         foreach ($footertags as $row) {
                             ?>
-                        <a href="index?sayfa=tag_detay&tag=<?php echo $row["footer_tag"] ?>"><?php echo $row["footer_tag"] ?></a>
+                        <a href="tag/<?=seo($row['footer_tag']);?>"><?php echo $row["footer_tag"] ?></a>
                         <?php
                         }
                         }

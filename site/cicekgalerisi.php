@@ -1,6 +1,7 @@
 
 <?php
 include "../pdo/connect.php";
+include "function.php";
 $ayarlar=$db->query("SELECT * FROM ayarlar")->fetch(PDO::FETCH_ASSOC);
 $nav = $db->query("SELECT * FROM nav");
 $section = $db->query("SELECT * FROM section");
@@ -85,7 +86,7 @@ $cicekgalerisi = $db->query("SELECT * FROM cicek_galerisi");
                     ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
-                            <a href="index?sayfa=recentpost_detay&recentpost_id=<?php echo $row['recentpost_id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
+                            <a href="recentpost/<?=seo($row['recent_baslik']).'/'.$row['recentpost_id'];?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
                         </div>
                         <div class="recent-post-title">
                             <p><?php echo $row["recent_baslik"]; ?></p>
@@ -106,7 +107,7 @@ $cicekgalerisi = $db->query("SELECT * FROM cicek_galerisi");
                         if ($footertags->rowCount()) {
                             foreach($footertags as $row){
                     ?>
-                        <a href="index?sayfa=latestpost_detay&kategori=<?php echo $row['footer_tag']; ?>"><?php echo $row["footer_tag"] ?></a>
+                        <a href="tag/<?=seo($row['footer_tag']);?>"><?php echo $row["footer_tag"] ?></a>
                     <?php 
                         }
                             }

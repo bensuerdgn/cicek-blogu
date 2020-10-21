@@ -1,11 +1,9 @@
 
-<base href="http://localhost/cicek-blogu/site/homepage">
 
 
 <?php
 include "../pdo/connect.php";
-
-
+include "function.php";
 if (isset($_GET['section_id'])) {
     $section_query = $db->prepare("SELECT * FROM section WHERE section_id=?");
     $section_query->execute([
@@ -78,7 +76,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     ?>
                     <div class="latest-posts">
                         <div class="latest-posts-img">
-                            <a href=" index?sayfa=latestpost_detay&latestpost_id=<?php echo $row['latestpost_id']; ?>"> <img src="<?php echo $row["latest_fotograf"]; ?>"></a>
+                            <a href="latestpost/<?=seo($row['latest_baslik']).'/'.$row['latestpost_id']?>"> <img src="<?php echo $row["latest_fotograf"]; ?>"></a>
                         </div>
                         <div class="latest-post-title">
                             <p><?php echo $row["latest_baslik"]; ?></p>
@@ -111,7 +109,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                     ?>
                     <div class="recent-posts">
                         <div class="recent-posts-img">
-                            <a href="index?sayfa=recentpost_detay&recentpost_id=<?php echo $row['recentpost_id']; ?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
+                            <a href="recentpost/<?=seo($row['recent_baslik']).'/'.$row['recentpost_id']?>"> <img src="<?php echo $row["recent_fotograf"]; ?>"></a>
                         </div>
                         <div class="recent-post-title">
                             <p><?php echo $row["recent_baslik"]; ?></p>
@@ -132,7 +130,7 @@ $footertags = $db->query("SELECT * FROM footertags");
                         if ($footertags->rowCount()) {
                             foreach($footertags as $row){
                     ?>
-                        <a href="index?sayfa=tag_detay&tag=<?php echo $row["footer_tag"] ?>"><?php echo $row["footer_tag"] ?></a>
+                        <a href="tag/<?=seo($row['footer_tag'])?>"><?php echo $row["footer_tag"] ?></a>
                     <?php 
                         }
                             }
