@@ -136,7 +136,7 @@ $footertags->execute();
                 </div>
             </div>
             <div class="page-number">
-            <div class="number">
+                <div class="number">
             <?php
             $s=0;
             while ($s < $toplam_sayfa) {

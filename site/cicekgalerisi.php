@@ -20,9 +20,6 @@ $nav->execute();
 
 $section = $db->prepare("SELECT * FROM section");
 $section->execute();
-
-$cicekgalerisi = $db->prepare("SELECT * FROM cicek_galerisi");
-$cicekgalerisi->execute();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,26 +58,60 @@ $cicekgalerisi->execute();
             <div class="section">
                 <div class="content">
                         <?php 
-                            if ($cicekgalerisi->rowCount()) {
-                                foreach($cicekgalerisi as $row){
+
+                    $sayfada=10;
+
+                    $sorgu=$db->prepare("SELECT * FROM cicek_galerisi");
+                    $sorgu->execute();
+                    $toplam_icerik=$sorgu->rowCount();
+                    $toplam_sayfa=ceil($toplam_icerik/$sayfada);
+
+                    $sayfa=isset($_GET['sayfa']) ? (int) $_GET['sayfa'] : 1;
+
+                    if ($sayfa<1) $sayfa=1;
+                    if ($sayfa>$toplam_sayfa) $sayfa=$toplam_sayfa;
+
+                    $limit = ($sayfa - 1) * $sayfada;
+                    $ciceksor=$db->prepare("SELECT * FROM cicek_galerisi ORDER BY cicekgalerisi_id DESC LIMIT $limit, $sayfada");
+                    $ciceksor->execute();
+                    $say=$ciceksor->rowCount();
+
+
+                    while ($cicekcek=$ciceksor->fetch(PDO::FETCH_ASSOC)) {
+
                         ?>
                     <div class="content-box">
                         
                         <div class="img">
-                            <img src="<?php echo $row["cicekgalerisi_fotograf"]; ?>">
+                            <img src="<?php echo $cicekcek["cicekgalerisi_fotograf"]; ?>">
                         </div>  
                     </div>
                     <?php 
                         }
-                            }
+                            
                     ?>
                 </div>
             </div>  
             <div class="page-number">
                 <div class="number">
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                </div>
+            <?php
+            $s=0;
+            while ($s < $toplam_sayfa) {
+                $s++;
+                if ($s==$sayfa) {
+            ?>
+                        <a href="cicekgalerisi?sayfa=<?php echo $s ; ?>"><?php echo $s ; ?></a>
+                    
+                    <?php
+                }else {
+                    ?>
+                        <a href="cicekgalerisi?sayfa=<?php echo $s ; ?>"><?php echo $s ; ?></a>
+                    
+            <?php
+                }
+            }
+            ?>
+               </div> 
             </div>
         </section>
         <footer>
